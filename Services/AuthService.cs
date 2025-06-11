@@ -58,5 +58,33 @@ namespace SmartMenu.Services
             }
         }
 
+        public async Task<bool> RegistrarUsuario(UserRequest user)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token)) return false;
+
+                var json = JsonConvert.SerializeObject(user);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var request = new HttpRequestMessage(HttpMethod.Post, $"{BaseUrl}/api/usuarios");
+                request.Content = content;
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                System.Diagnostics.Debug.WriteLine("🟣 Registro RESPONSE: " + responseContent);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("❌ Error al registrar usuario: " + ex.Message);
+                return false;
+            }
+        }
+
+
     }
 }

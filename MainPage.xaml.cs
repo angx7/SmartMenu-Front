@@ -15,9 +15,9 @@ namespace SmartMenu
             Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
 
-        private void OnAddUserClicked(object sender, EventArgs e)
+        private async void OnAddUserClicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new NavigationPage(new AddUserPage());
+            await Navigation.PushAsync(new AddUserPage());
         }
 
     }

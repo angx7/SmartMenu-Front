@@ -61,14 +61,10 @@
 
 	<ItemGroup>
 	  <None Remove=".env" />
-	  <None Remove="Globals\.env" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Content Include=".env">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="Globals\.env">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
@@ -87,6 +83,10 @@
 	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Globals\" />
 	</ItemGroup>
 
 </Project>

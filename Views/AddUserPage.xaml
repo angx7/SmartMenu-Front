@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SmartMenu.ViewModels"
              x:Class="SmartMenu.Views.AddUserPage"
-             Title="AddUserPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Nuevo Usuario"
+             BackgroundColor="Black">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+            <Label Text="Registrar nuevo usuario" 
+                   FontSize="22" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <Entry Placeholder="Nombre completo" Text="{Binding Nombre}" />
+            <Entry Placeholder="Usuario" Text="{Binding Usuario}" />
+            <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding Contrasena}" />
+            <Entry Placeholder="Rol ID (ej: 1 o 2)" Keyboard="Numeric" Text="{Binding Rol}" />
+
+            <Button Text="Registrar"
+                    Command="{Binding RegistrarCommand}"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    Padding="10" />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
