@@ -71,3 +71,4 @@ packages/
 *.dbmdl
 *.pfx
 *.publishsettings
+.env

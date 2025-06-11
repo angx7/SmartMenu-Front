@@ -9,7 +9,8 @@ namespace SmartMenu.Services
     public class AuthService
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "https://d974-2a09-bac1-5080-90-00-f-312.ngrok-free.app";
+        private readonly string BaseUrl;
+        
 
         public AuthService()
         {
@@ -17,6 +18,7 @@ namespace SmartMenu.Services
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json")
             );
+            BaseUrl = Environment.GetEnvironmentVariable("NGROK_URL") ?? throw new Exception("NGROK_URL no está definido en Globals/.env");
         }
 
         public async Task<bool> Login(string usuario, string contraseña)

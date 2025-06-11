@@ -60,6 +60,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove=".env" />
+	  <None Remove="Globals\.env" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include=".env">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Globals\.env">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DotNetEnv" Version="3.1.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
