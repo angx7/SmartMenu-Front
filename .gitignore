@@ -1,0 +1,73 @@
+# ===================
+# .NET MAUI + VS2022
+# ===================
+
+# Build
+bin/
+obj/
+**/bin/
+**/obj/
+
+# User-specific
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# Mac-specific
+.DS_Store
+
+# MAUI Platforms
+**/Platforms/Android/bin/
+**/Platforms/Android/obj/
+**/Platforms/iOS/bin/
+**/Platforms/iOS/obj/
+**/Platforms/MacCatalyst/bin/
+**/Platforms/MacCatalyst/obj/
+**/Platforms/Windows/bin/
+**/Platforms/Windows/obj/
+
+# APK / AAB / IPA builds
+*.apk
+*.aab
+*.app
+*.ipa
+*.xcarchive
+
+# Designer and generated code
+*.designer.cs
+*.g.cs
+*.g.i.cs
+Generated_Code/
+
+# Publish outputs
+publish/
+AppPackages/
+BundleArtifacts/
+
+# Test results
+TestResults/
+*.coverage
+*.coveragexml
+
+# Logs and temp files
+*.log
+*.tmp
+*.tmp_proj
+*.svclog
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# Others
+*.dbmdl
+*.pfx
+*.publishsettings
