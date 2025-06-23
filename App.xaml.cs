@@ -1,23 +1,55 @@
 ﻿using DotNetEnv;
 using SmartMenu.Views;
+using SmartMenu.Services;
+using System.Diagnostics;
 
 namespace SmartMenu;
 
 public partial class App : Application
 {
+    private readonly AuthService _authService;
+
     public App()
     {
         Env.Load(".env");
         InitializeComponent();
-        // Si hay token guardado, va directo al Shell (donde está HomePage)
+        _authService = new AuthService();
+        MainPage = new NavigationPage(new LoginPage()); // Página temporal mientras se inicializa
+        InicializarAsync();
+    }
+
+    private async void InicializarAsync()
+    {
+        System.Diagnostics.Debug.WriteLine("Inicializando app...");
         if (Preferences.ContainsKey("token"))
         {
-            MainPage = new AppShell();
+            var token = Preferences.Get("token", null);
+            System.Diagnostics.Debug.WriteLine("Token encontrado: " + token);
+            if (token != null)
+            {
+                var rol = await _authService.ObtenerRolAsync(token);
+                System.Diagnostics.Debug.WriteLine("Respuesta de ObtenerRolAsync: " + (rol ?? "null"));
+                if (!string.IsNullOrEmpty(rol))
+                {
+                    System.Diagnostics.Debug.WriteLine("Tu rol es " + rol);
+                    Application.Current.MainPage = new AppShell();
+                    return;
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("No se pudo obtener el rol.");
+                }
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Token es null.");
+            }
         }
         else
         {
-            // Si no hay token, muestra el login
-            MainPage = new NavigationPage(new LoginPage());
+            System.Diagnostics.Debug.WriteLine("No hay token en Preferences.");
         }
+        // Si no hay token o no se pudo obtener el rol, muestra el login
+        MainPage = new NavigationPage(new LoginPage());
     }
 }

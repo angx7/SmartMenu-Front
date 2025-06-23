@@ -89,4 +89,12 @@
 	  <Folder Include="Globals\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EditorConfigFiles Remove="C:\Clases\Cuarto Semestre\Desarrollo movil\C# MAUI\SmartMenu\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="C:\Clases\Cuarto Semestre\Desarrollo movil\C# MAUI\SmartMenu\.editorconfig" />
+	</ItemGroup>
+
 </Project>

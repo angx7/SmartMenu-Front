@@ -26,9 +26,9 @@ namespace SmartMenu.Services
         public static int GetRolId(string token)
         {
             var payload = DecodePayload(token);
-            if (payload.TryGetValue("rol_id", out var rolId))
+            if (payload.TryGetValue("rol_id", out var rolId) && rolId is JsonElement jsonElement && jsonElement.TryGetInt32(out var intRolId))
             {
-                return Convert.ToInt32(rolId);
+                return intRolId;
             }
 
             throw new Exception("El token no contiene rol_id");

@@ -52,9 +52,19 @@ namespace SmartMenu.ViewModels
             if (isAuthenticated)
             {
                 var token = Preferences.Get("token", null);
-                int rolId = SmartMenu.Services.JwtHelper.GetRolId(token);
-
-                Application.Current.MainPage = new AppShell();
+                if (token != null)
+                {
+                    var rol = await _authService.ObtenerRolAsync(token);
+                    if (!string.IsNullOrEmpty(rol))
+                    {
+                        System.Diagnostics.Debug.WriteLine("Tu rol es " + rol);
+                        Application.Current.MainPage = new AppShell();
+                    }
+                }
+                else
+                {
+                    await _page.DisplayAlert("Error", "No se pudo obtener el token", "OK");
+                }
             }
             else
             {
