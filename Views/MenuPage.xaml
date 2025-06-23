@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            x:Class="SmartMenu.Views.MenuPage">  
+   <ScrollView>  
+       <Grid Padding="20">  
+           <Grid.RowDefinitions>  
+               <RowDefinition Height="Auto" />  
+               <RowDefinition Height="*" />  
+           </Grid.RowDefinitions>  
+           <Label  
+               Text="Menu"  
+               FontSize="30"  
+               FontAttributes="Bold"  
+               HorizontalOptions="Center"  
+               Margin="0,0,0,30"  
+               Grid.Row="0" />  
+           <VerticalStackLayout  
+               Spacing="15"  
+               Grid.Row="1">  
+               <Button  
+                   Text="Comida"  
+                   BackgroundColor="#D3D3D3"  
+                   TextColor="Black"  
+                   CornerRadius="10"  
+                   HeightRequest="60"  
+                   FontSize="20" />  
+               <Button  
+                   Text="Bebidas"  
+                   BackgroundColor="#D3D3D3"  
+                   TextColor="Black"  
+                   CornerRadius="10"  
+                   HeightRequest="60"  
+                   FontSize="20" />  
+               <Button  
+                   Text="Entradas"  
+                   BackgroundColor="#D3D3D3"  
+                   TextColor="Black"  
+                   CornerRadius="10"  
+                   HeightRequest="60"  
+                   FontSize="20" />  
+               <Button  
+                   Text="Postres"  
+                   BackgroundColor="#D3D3D3"  
+                   TextColor="Black"  
+                   CornerRadius="10"  
+                   HeightRequest="60"  
+                   FontSize="20" />  
+               <Button  
+                   Text="comida"  
+                   BackgroundColor="#D3D3D3"  
+                   TextColor="Black"  
+                   CornerRadius="10"  
+                   HeightRequest="60"  
+                   FontSize="20" />  
+               <Button  
+                   Text="Cobrar"  
+                   BackgroundColor="#D3D3D3"  
+                   TextColor="Black"  
+                   CornerRadius="10"  
+                   HeightRequest="60"  
+                   FontSize="20" />  
+           </VerticalStackLayout>  
+       </Grid>  
+   </ScrollView>  
+</ContentView>
