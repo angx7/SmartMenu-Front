@@ -4,10 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:SmartMenu"
-    xmlns:views="clr-namespace:SmartMenu.Views"  Title="SmartMenu">
+    Title="SmartMenu">
 
     <ShellContent
         Title="Menu Principal"  
-        ContentTemplate="{DataTemplate views:MenuPage}" 
-        Route="MenuPage" />
+        ContentTemplate="{DataTemplate local:MainPage}" 
+        Route="HomePage" />
 </Shell>

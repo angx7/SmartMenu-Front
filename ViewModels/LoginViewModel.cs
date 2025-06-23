@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using SmartMenu.Services;
+using SmartMenu.Views;
 
 namespace SmartMenu.ViewModels
 {
@@ -51,7 +52,7 @@ namespace SmartMenu.ViewModels
 
             if (isAuthenticated)
             {
-                Application.Current.MainPage = new AppShell();
+                Application.Current.MainPage = new MainPage();
             }
             else
             {
