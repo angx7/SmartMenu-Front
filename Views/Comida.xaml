@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.Comida"
+             BackgroundColor="#FFE066"
+             Title="Comida">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25" HorizontalOptions="Center">
+
+            <Label
+                Text="Comida"
+                FontSize="32"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <!-- Hamburguesa -->
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                <Border StrokeThickness="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 20">
+                    <Image Source="hamburguesa.png"
+                           WidthRequest="150"
+                           HeightRequest="150"
+                           Aspect="AspectFill" />
+                </Border>
+                <Label Text="Hamburguesa" FontSize="18" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+            <!-- Ensalada -->
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                <Border StrokeThickness="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 20">
+                    <Image Source="ensalada.png"
+                           WidthRequest="150"
+                           HeightRequest="150"
+                           Aspect="AspectFill" />
+                </Border>
+                <Label Text="Ensalada" FontSize="18" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+            <!-- Pizza Pepperoni -->
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
+                <Border StrokeThickness="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 20">
+                    <Image Source="pizza.png"
+                           WidthRequest="150"
+                           HeightRequest="150"
+                           Aspect="AspectFill" />
+                </Border>
+                <Label Text="Pizza Pepperoni" FontSize="18" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+            <!-- Botón Agregar -->
+            <Button
+                Text="Agregar"
+                FontSize="22"
+                TextColor="White"
+                BackgroundColor="#DC3545"
+                CornerRadius="20"
+                HeightRequest="60"
+                WidthRequest="300"
+                HorizontalOptions="Center"
+                Margin="0,30,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
