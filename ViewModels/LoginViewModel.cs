@@ -51,6 +51,9 @@ namespace SmartMenu.ViewModels
 
             if (isAuthenticated)
             {
+                var token = Preferences.Get("token", null);
+                int rolId = SmartMenu.Services.JwtHelper.GetRolId(token);
+
                 Application.Current.MainPage = new AppShell();
             }
             else
