@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SmartMenu.Views.AdminView">
-    <!--<ContentPage.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-            <GradientStop></GradientStop>
-            <GradientStop></GradientStop>
-        </LinearGradientBrush>
-    </ContentPage.Background>-->
+             x:Class="SmartMenu.Views.AdminView"
+             Title="AdminView">
     <Grid>
         <ScrollView>
             <Grid>
@@ -20,8 +15,8 @@
                     <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
                         <!--<Image Source="tienditalogo.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>-->
                         <Label Text="Adminstrador" TextColor="Azure" FontSize="24"
-                               FontAttributes="Bold"
-                               HorizontalOptions="Center"/>
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
                         <!--Formulario de login-->
 
                         <Border BackgroundColor="White" Padding="20">
@@ -31,24 +26,24 @@
                             <VerticalStackLayout Spacing="15">
                                 <VerticalStackLayout Spacing="5">
                                     <Label Text="Usuario"
-                                           TextColor="#1976D2"
-                                           FontAttributes="Bold"/>
+                                       TextColor="#1976D2"
+                                       FontAttributes="Bold"/>
                                     <Entry Placeholder="juanito123"/>
                                 </VerticalStackLayout>
                                 <VerticalStackLayout Spacing="5">
                                     <Label Text="Contraseña"
-                                           TextColor="#1976D2"
-                                           FontAttributes="Bold"/>
+                                       TextColor="#1976D2"
+                                       FontAttributes="Bold"/>
                                     <Entry Placeholder="Ingresar contraseña"
-                                           IsPassword="True"></Entry>
+                                       IsPassword="True"></Entry>
                                 </VerticalStackLayout>
                                 <Button Text="Agregar Usuarios"
-                                        BackgroundColor="#D72638"
-                                        TextColor="Azure"
-                                        CornerRadius="10"
-                                        HeightRequest="50"
-                                        FontAttributes="Bold"
-                                        Margin="0,20,0,0"/>
+                                    BackgroundColor="#D72638"
+                                    TextColor="Azure"
+                                    CornerRadius="10"
+                                    HeightRequest="50"
+                                    FontAttributes="Bold"
+                                    Margin="0,20,0,0"/>
                             </VerticalStackLayout>
                         </Border>
                     </VerticalStackLayout>
@@ -57,5 +52,4 @@
             </Grid>
         </ScrollView>
     </Grid>
-
-</ContentView>
+</ContentPage>

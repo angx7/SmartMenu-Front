@@ -1,6 +1,6 @@
 namespace SmartMenu.Views;
 
-public partial class AdminView : ContentView
+public partial class AdminView : ContentPage
 {
 	public AdminView()
 	{

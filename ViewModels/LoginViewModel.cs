@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using SmartMenu.Services;
+using SmartMenu.Views;
 
 namespace SmartMenu.ViewModels
 {
@@ -58,7 +59,13 @@ namespace SmartMenu.ViewModels
                     if (!string.IsNullOrEmpty(rol))
                     {
                         System.Diagnostics.Debug.WriteLine("Tu rol es " + rol);
-                        Application.Current.MainPage = new AppShell();
+                        if (rol.Equals("administrador"))
+                        {
+                            Application.Current.MainPage = new NavigationPage(new AdminView());
+                        }
+                        else { 
+                            Application.Current.MainPage = new AppShell();
+                        }
                     }
                 }
                 else
