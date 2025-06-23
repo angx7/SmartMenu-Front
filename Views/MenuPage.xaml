@@ -20,43 +20,36 @@
                Grid.Row="1">  
                <Button  
                    Text="Comida"  
-                   BackgroundColor="#D3D3D3"  
-                   TextColor="Black"  
+                   BackgroundColor="Red"  
+                   TextColor="White"  
                    CornerRadius="10"  
                    HeightRequest="60"  
                    FontSize="20" />  
                <Button  
                    Text="Bebidas"  
-                   BackgroundColor="#D3D3D3"  
-                   TextColor="Black"  
+                   BackgroundColor="Red"  
+                   TextColor="White"  
                    CornerRadius="10"  
                    HeightRequest="60"  
                    FontSize="20" />  
                <Button  
                    Text="Entradas"  
-                   BackgroundColor="#D3D3D3"  
-                   TextColor="Black"  
+                   BackgroundColor="Red"  
+                   TextColor="White"  
                    CornerRadius="10"  
                    HeightRequest="60"  
                    FontSize="20" />  
                <Button  
                    Text="Postres"  
-                   BackgroundColor="#D3D3D3"  
-                   TextColor="Black"  
-                   CornerRadius="10"  
-                   HeightRequest="60"  
-                   FontSize="20" />  
-               <Button  
-                   Text="comida"  
-                   BackgroundColor="#D3D3D3"  
-                   TextColor="Black"  
+                   BackgroundColor="Red"  
+                   TextColor="White"  
                    CornerRadius="10"  
                    HeightRequest="60"  
                    FontSize="20" />  
                <Button  
                    Text="Cobrar"  
-                   BackgroundColor="#D3D3D3"  
-                   TextColor="Black"  
+                   BackgroundColor="Black"  
+                   TextColor="White"  
                    CornerRadius="10"  
                    HeightRequest="60"  
                    FontSize="20" />  
