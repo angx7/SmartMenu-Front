@@ -32,7 +32,14 @@ public partial class App : Application
                 if (!string.IsNullOrEmpty(rol))
                 {
                     System.Diagnostics.Debug.WriteLine("Tu rol es " + rol);
-                    Application.Current.MainPage = new AppShell();
+                    if (rol.Equals("administrador"))
+                    {
+                        Application.Current.MainPage = new AdminView();
+                    }
+                    else
+                    {
+                        Application.Current.MainPage = new AppShell();
+                    }
                     return;
                 }
                 else
