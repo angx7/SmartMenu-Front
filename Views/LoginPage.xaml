@@ -1,30 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.LoginPage"
              Title="Iniciar Sesión"
-             BackgroundColor="Black">
+             BackgroundColor="#F2F2F2">
 
     <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
 
-            <Label Text="SmartMenu" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" />
-            <Label Text="Bienvenido" FontSize="20" HorizontalOptions="Center" />
+            <!-- Logo -->
+            <Image Source="logo.png" HeightRequest="120" WidthRequest="120" HorizontalOptions="Center"/>
 
-            <Entry Placeholder="Usuario"
-                   Text="{Binding Usuario}" />
+            <!-- Card contenedor -->
+            <Frame BackgroundColor="#FDE47F" Padding="20" CornerRadius="10" HasShadow="True">
 
-            <Entry Placeholder="Contraseña"
-                   IsPassword="True"
-                   Text="{Binding Contrasena}" />
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Iniciar Sesión" FontSize="20" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"/>
 
-            <Button Text="Iniciar Sesión"
+                    <Label Text="Correo Electrónico:" FontSize="14" TextColor="Black"/>
+                    <Entry Placeholder="ejemplo@correo.com" Text="{Binding Usuario}" Keyboard="Email" BackgroundColor="#F4F4F4" />
+
+                    <Label Text="Contraseña:" FontSize="14" TextColor="Black"/>
+                    <Entry Placeholder="••••••" Text="{Binding Contrasena}" IsPassword="True" BackgroundColor="#F4F4F4"/>
+
+                    <Label Text="¿Olvidaste tu contraseña?" FontSize="12" TextColor="Blue" HorizontalOptions="Start"/>
+                    <Label Text="¿No tienes cuenta? " FontSize="12" TextColor="Black">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RegisterCommand}" />
+                        </Label.GestureRecognizers>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="¿No tienes cuenta? "/>
+                                <Span Text="Regístrate" TextColor="Blue" FontAttributes="Bold"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <!-- Botón -->
+            <Button Text="Iniciar sesión"
                     Command="{Binding LoginCommand}"
-                    BackgroundColor="#007AFF"
+                    BackgroundColor="#D62828"
                     TextColor="White"
-                    CornerRadius="10"
-                    Padding="10" />
-
+                    FontSize="16"
+                    CornerRadius="20"
+                    Padding="12,10"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+

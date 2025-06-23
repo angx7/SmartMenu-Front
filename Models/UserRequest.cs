@@ -15,4 +15,5 @@ public class UserRequest
 
     [JsonProperty("rol_id")]
     public int Rol_Id { get; set; }
-}
+
+    }
