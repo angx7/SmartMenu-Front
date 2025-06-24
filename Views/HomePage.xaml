@@ -46,5 +46,7 @@
             WidthRequest="250"
             Clicked="Mesa3_Clicked"/>
 
+        <Button Text="Cerrar sesión" Clicked="OnLogoutClicked" />
+
     </VerticalStackLayout>
 </ContentPage>

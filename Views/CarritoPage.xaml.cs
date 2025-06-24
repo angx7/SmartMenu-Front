@@ -1,14 +1,14 @@
 
-
+namespace SmartMenu.Views;
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SmartMenu.Views
-{
-    public partial class CarritoPage : ContentPage
-    {
+
+
+public partial class CarritoPage : ContentPage { 
+    
         private List<Comida.Platillo> carrito;
         private int mesaId;
 
@@ -32,4 +32,3 @@ namespace SmartMenu.Views
             await Navigation.PopToRootAsync(); // Regresa a la pantalla principal
         }
     }
-}
