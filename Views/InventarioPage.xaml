@@ -1,71 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-            x:Class="SmartMenu.Views.InventarioPage"  
-            xmlns:models="clr-namespace:SmartMenu.Models"  
-            Title="InventarioPage"  
-            BackgroundColor="Red">  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="SmartMenu.Views.InventarioPage"  
+             xmlns:models="clr-namespace:SmartMenu.Models"  
+             Title="InventarioPage"  
+             BackgroundColor="Red">
 
-   <ScrollView>  
-       <Grid Padding="30" RowSpacing="20">  
-           <Grid.RowDefinitions>  
-               <RowDefinition Height="Auto" />  
-               <RowDefinition Height="*" />  
-           </Grid.RowDefinitions>  
+    <ScrollView>
+        <Grid Padding="30" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-           <Label Text="Inventario"  
-                  FontSize="36"  
-                  FontAttributes="Bold"  
-                  HorizontalOptions="Center"  
-                  VerticalOptions="Start"  
-                  Margin="0,20,0,0"  
-                  TextColor="White"  
-                  Grid.Row="0" />  
+            <Label Text="Inventario"  
+                   FontSize="36"  
+                   FontAttributes="Bold"  
+                   HorizontalOptions="Center"  
+                   VerticalOptions="Start"  
+                   Margin="0,20,0,0"  
+                   TextColor="White"  
+                   Grid.Row="0" />
 
-           <CollectionView Grid.Row="1" ItemsSource="{Binding Insumos}"  
-                           VerticalOptions="Fill"  
-                           HorizontalOptions="Fill"> <!-- Updated to 'Fill' -->  
-               <CollectionView.ItemTemplate>  
-                   <DataTemplate x:DataType="models:Insumo">  
-                       <Border Padding="20"  
-                               Margin="0,0,0,25"  
-                               StrokeShape="RoundRectangle"  
-                               StrokeThickness="0"  
-                               BackgroundColor="#FFE066"  
-                               HorizontalOptions="Fill"> <!-- Updated to 'Fill' -->  
+            <CollectionView Grid.Row="1" ItemsSource="{Binding Insumos}"  
+                            VerticalOptions="Fill"  
+                            HorizontalOptions="Fill">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Insumo">
+                        <Border Padding="20"  
+                                Margin="0,0,0,25"  
+                                StrokeShape="RoundRectangle"  
+                                StrokeThickness="0"  
+                                BackgroundColor="#FFE066"  
+                                HorizontalOptions="Fill">
 
-                           <Border.GestureRecognizers>  
-                               <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToProductDetailCommand}"  
-                                                     CommandParameter="{Binding .}"/>  
-                           </Border.GestureRecognizers>  
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditarInsumoCommand}"  
+                                    CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
 
-                           <StackLayout Orientation="Vertical" Spacing="5">  
-                               <Label Text="{Binding Nombre}"  
-                                      FontSize="Medium"  
-                                      FontAttributes="Bold"  
-                                      TextColor="Black"/>  
+                            <StackLayout Orientation="Vertical" Spacing="5">
+                                <Label Text="{Binding Nombre}"  
+                                       FontSize="Medium"  
+                                       FontAttributes="Bold"  
+                                       TextColor="Black"/>
 
-                               <StackLayout Orientation="Horizontal">  
-                                   <Label Text="ID: " FontAttributes="Bold" TextColor="Black"/>  
-                                   <Label Text="{Binding Id}" TextColor="Black"/>  
-                               </StackLayout>  
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="ID: " FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Id}" TextColor="Black"/>
+                                </StackLayout>
 
-                               <StackLayout Orientation="Horizontal">  
-                                   <Label Text="Stock: " FontAttributes="Bold" TextColor="Black"/>  
-                                   <Label Text="{Binding Stock}" TextColor="Black"/>  
-                                   <Label Text="{Binding Unidad}" Margin="5,0,0,0" TextColor="Black"/>  
-                               </StackLayout>  
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Stock: " FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding Stock}" TextColor="Black"/>
+                                    <Label Text="{Binding Unidad}" Margin="5,0,0,0" TextColor="Black"/>
+                                </StackLayout>
 
-                               <StackLayout Orientation="Horizontal">  
-                                   <Label Text="Stock Mínimo: " FontAttributes="Bold" TextColor="Black"/>  
-                                   <Label Text="{Binding StockMinimo}" TextColor="Black"/>  
-                               </StackLayout>  
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Stock Mínimo: " FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding StockMinimo}" TextColor="Black"/>
+                                </StackLayout>
 
-                           </StackLayout>  
-                       </Border>  
-                   </DataTemplate>  
-               </CollectionView.ItemTemplate>  
-           </CollectionView>  
-       </Grid>  
-   </ScrollView>  
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
 </ContentPage>
