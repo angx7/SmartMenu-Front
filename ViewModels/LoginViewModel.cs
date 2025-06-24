@@ -52,7 +52,31 @@ namespace SmartMenu.ViewModels
 
             if (isAuthenticated)
             {
-                Application.Current.MainPage = new CocinaPage();
+                var token = Preferences.Get("token", null);
+                if (token != null)
+                {
+                    var rol = await _authService.ObtenerRolAsync(token);
+                    if (!string.IsNullOrEmpty(rol))
+                    {
+                        System.Diagnostics.Debug.WriteLine("Tu rol es " + rol);
+                        if (rol.Equals("administrador"))
+                        {
+                            //Application.Current.MainPage = new NavigationPage(new AdminView());
+                        }
+                        else if (rol.Equals("cocinero"))
+                        {
+                            Application.Current.MainPage = new NavigationPage(new CocinaPage());
+                        }
+                        else
+                        {
+                            Application.Current.MainPage = new NavigationPage(new AppShell());
+                        }
+                    }
+                }
+                else
+                {
+                    await _page.DisplayAlert("Error", "No se pudo obtener el token", "OK");
+                }
             }
             else
             {

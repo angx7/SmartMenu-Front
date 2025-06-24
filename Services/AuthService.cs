@@ -85,6 +85,39 @@ namespace SmartMenu.Services
             }
         }
 
+        public async Task<string> ObtenerRolAsync(string token)
+        {
+            System.Diagnostics.Debug.WriteLine("Llamando a /rol con token: " + token);
+            var request = new HttpRequestMessage(HttpMethod.Get, $"{BaseUrl}/api/rol");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
+            try
+            {
+                var response = await _httpClient.SendAsync(request);
+                System.Diagnostics.Debug.WriteLine("Status code: " + response.StatusCode);
+
+                var json = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine("Respuesta JSON: " + json);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error en la respuesta: " + json);
+                    return null;
+                }
+
+                using var doc = System.Text.Json.JsonDocument.Parse(json);
+                if (doc.RootElement.TryGetProperty("rol", out var rolElement))
+                {
+                    return rolElement.GetString();
+                }
+                System.Diagnostics.Debug.WriteLine("No se encontró el campo 'rol' en la respuesta.");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Excepción en ObtenerRolAsync: " + ex.Message);
+                return null;
+            }
+        }
     }
 }
