@@ -52,7 +52,7 @@ namespace SmartMenu.ViewModels
 
             if (isAuthenticated)
             {
-                Application.Current.MainPage = new ResumenPedidoPage();
+                Application.Current.MainPage = new CocinaPage();
             }
             else
             {

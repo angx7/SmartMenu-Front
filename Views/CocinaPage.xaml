@@ -22,7 +22,7 @@
                   Grid.Row="0" />  
 
            <Button Text="Consultar Inventario"  
-                   Command="{Binding ConsultInventoryCommand}"  
+                   Clicked="Button_Clicked"
                    BackgroundColor="#FFE066"  
                    TextColor="Black"  
                    CornerRadius="10"  
@@ -30,7 +30,7 @@
                    Grid.Row="1" />  
 
            <Button Text="Ver Pedidos"  
-                   Command="{Binding ViewOrdersCommand}"  
+                   Clicked="Button_Clicked_1"
                    BackgroundColor="#FFE066"  
                    TextColor="Black"  
                    CornerRadius="10"  
