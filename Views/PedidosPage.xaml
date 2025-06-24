@@ -14,7 +14,7 @@
                    FontSize="36"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="White" />
+                   TextColor="Black" />
             <CollectionView ItemsSource="{Binding Pedidos}"
                             SelectionMode="None"
                             x:Name="PedidosCollection">
@@ -25,10 +25,10 @@
                                 <TapGestureRecognizer Tapped="Pedido_Tapped" CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
                             <StackLayout>
-                                <Label Text="{Binding pedido_id, StringFormat='Pedido #{0}'}" FontAttributes="Bold" />
-                                <Label Text="{Binding fecha, StringFormat='Fecha: {0}'}" />
-                                <Label Text="{Binding mesa_id, StringFormat='Mesa: {0}'}" />
-                                <Label Text="{Binding mesero, StringFormat='Mesero: {0}'}" />
+                                <Label Text="{Binding pedido_id, StringFormat='Pedido #{0}'}" FontAttributes="Bold" TextColor="Black" />
+                                <Label Text="{Binding fecha, StringFormat='Fecha: {0}'}" TextColor="Black"/>
+                                <Label Text="{Binding mesa_id, StringFormat='Mesa: {0}'}"  TextColor="Black"/>
+                                <Label Text="{Binding mesero, StringFormat='Mesero: {0}'}" TextColor="Black"/>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>

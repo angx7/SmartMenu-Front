@@ -21,7 +21,7 @@
                   HorizontalOptions="Center"  
                   VerticalOptions="Start"  
                   Margin="0,20,0,0"  
-                  TextColor="White"  
+                  TextColor="Black"  
                   Grid.Row="0" />
 
             <Button Text="Consultar Inventario"  

@@ -6,11 +6,11 @@
              Title="Editar Proveedor">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
-            <Label Text="Editar proveedor" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
-            <Entry Text="{Binding Nombre}" Placeholder="Nombre"   BackgroundColor="White" />
-            <Entry Text="{Binding Contacto}" Placeholder="Contacto"  BackgroundColor="White" />
-            <Entry Text="{Binding Telefono}" Placeholder="Teléfono" Keyboard="Telephone"  BackgroundColor="White"/>
-            <Entry Text="{Binding Correo}" Placeholder="Correo" Keyboard="Email"  BackgroundColor="White"/>
+            <Label Text="Editar proveedor" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" TextColor="Black"/>
+            <Entry Text="{Binding Nombre}" Placeholder="Nombre"   BackgroundColor="White" TextColor="Black"/>
+            <Entry Text="{Binding Contacto}" Placeholder="Contacto"  BackgroundColor="White" TextColor="Black"/>
+            <Entry Text="{Binding Telefono}" Placeholder="Teléfono" Keyboard="Telephone"  BackgroundColor="White" TextColor="Black"/>
+            <Entry Text="{Binding Correo}" Placeholder="Correo" Keyboard="Email"  BackgroundColor="White" TextColor="Black"/>
             <Button Text="Guardar cambios"
                     Command="{Binding GuardarCommand}"
                     BackgroundColor="#4CAF50"
