@@ -34,10 +34,11 @@
 
 
                         <!-- Botones -->
-                        <Button Text="Consultar Usuario"
+                        <Button Text="Consultar meseros"
                         BackgroundColor="#D32F2F"
                         TextColor="White"
                         CornerRadius="20"
+                        Clicked="OnVerMeserosDisponibles"
                         />
 
                         <Button Text="Agregar Usuario"
@@ -49,7 +50,8 @@
                         <Button Text="Consultar proveedor"
                         BackgroundColor="#D32F2F"
                         TextColor="White"
-                        CornerRadius="20"/>
+                        CornerRadius="20"
+                                Clicked="OnVerProveedoresDisponibles"/>
 
                         <Button Text="Agregar proveedor"
                         BackgroundColor="#D32F2F"
