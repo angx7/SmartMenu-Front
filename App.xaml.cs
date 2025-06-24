@@ -39,6 +39,10 @@ public partial class App : Application
                     {
                         Application.Current.MainPage = new NavigationPage(new MeseroPage());
                     }
+                    else if (rol.Equals("cocinero"))
+                    {
+                        Application.Current.MainPage = new NavigationPage(new CocinaPage());
+                    }
                     else
                     {
                         Application.Current.MainPage = new NavigationPage(new AppShell());

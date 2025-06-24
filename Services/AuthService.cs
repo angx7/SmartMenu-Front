@@ -90,6 +90,7 @@ namespace SmartMenu.Services
             var request = new HttpRequestMessage(HttpMethod.Get, $"{BaseUrl}/api/rol");
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
+
             try
             {
                 var response = await _httpClient.SendAsync(request);
@@ -118,6 +119,5 @@ namespace SmartMenu.Services
                 return null;
             }
         }
-
     }
 }
