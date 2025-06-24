@@ -7,8 +7,7 @@
     Title="SmartMenu">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        Title="Menu Principal"  
+        ContentTemplate="{DataTemplate local:MainPage}" 
         Route="HomePage" />
-
 </Shell>

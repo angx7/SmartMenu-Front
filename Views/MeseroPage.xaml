@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.MeseroPage"
+             BackgroundColor="#FFE066"
+             Title="Mesas">
+
+    <VerticalStackLayout Padding="30" Spacing="30" HorizontalOptions="Center">
+
+        <!-- Título -->
+        <Label
+            Text="Selecciona una mesa"
+            FontSize="30"
+            FontAttributes="Bold"
+            TextColor="Black"
+            HorizontalOptions="Center" />
+
+        <!-- Botones para las mesas -->
+        <Button
+            Text="Mesa 1"
+            FontSize="22"
+            BackgroundColor="#DC3545"
+            TextColor="White"
+            CornerRadius="20"
+            HeightRequest="60"
+            WidthRequest="250"
+            Clicked="Mesa1_Clicked"/>
+
+        <Button
+            Text="Mesa 2"
+            FontSize="22"
+            BackgroundColor="#DC3545"
+            TextColor="White"
+            CornerRadius="20"
+            HeightRequest="60"
+            WidthRequest="250"
+            Clicked="Mesa2_Clicked"/>
+
+        <Button
+            Text="Mesa 3"
+            FontSize="22"
+            BackgroundColor="#DC3545"
+            TextColor="White"
+            CornerRadius="20"
+            HeightRequest="60"
+            WidthRequest="250"
+            Clicked="Mesa3_Clicked"/>
+
+        <Button Text="Cerrar sesión" Clicked="OnLogoutClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,32 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.LoginPage"
-             Title="Iniciar Sesión"  
-             BackgroundColor="Black">
+             Title="Iniciar Sesión"
+             BackgroundColor="#F2F2F2">
 
     <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
 
-            <Label Text="SmartMenu" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" TextColor="White"/>
-            <Label Text="Bienvenido" FontSize="20" HorizontalOptions="Center" TextColor="White"/>
+            <!-- Logo con bordes redondeados -->
+            <Frame Padding="0"
+                   HeightRequest="120"
+                   WidthRequest="120"
+                   CornerRadius="20"
+                   IsClippedToBounds="True"
+                   HasShadow="False"
+                   HorizontalOptions="Center"
+                   BackgroundColor="Transparent">
+                <Image Source="logo.png" Aspect="AspectFill"/>
+            </Frame>
 
-            <Entry Placeholder="Usuario"
-                   Text="{Binding Usuario}" 
-                   Background="White"/>
+            <!-- Card contenedor -->
+            <Frame BackgroundColor="#FDE47F" Padding="20" CornerRadius="10" HasShadow="True">
 
-            <Entry Placeholder="Contraseña"
-                   Background="White"
-                   IsPassword="True"
-                   Text="{Binding Contrasena}" />
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Iniciar Sesión" FontSize="20" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"/>
 
-            <Button Text="Iniciar Sesión"
+                    <Label Text="Correo Electrónico:" FontSize="14" TextColor="Black"/>
+                    <Entry Placeholder="ejemplo@correo.com"
+                           Text="{Binding Usuario}"
+                           Keyboard="Email"
+                           BackgroundColor="#F4F4F4"
+                           TextColor="#000000" />
+
+                    <Label Text="Contraseña:" FontSize="14" TextColor="Black"/>
+                    <Entry Placeholder="••••••"
+                           Text="{Binding Contrasena}"
+                           IsPassword="True"
+                           BackgroundColor="#F4F4F4"
+                           TextColor="#000000" />
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <!-- Botón -->
+            <Button Text="Iniciar sesión"
                     Command="{Binding LoginCommand}"
-                    BackgroundColor="#007AFF"
+                    BackgroundColor="#D62828"
                     TextColor="White"
-                    CornerRadius="10"
-                    Padding="10" />
-
+                    FontSize="16"
+                    CornerRadius="20"
+                    Padding="12,10"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

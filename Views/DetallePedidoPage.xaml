@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.DetallePedidoPage"
+             Title="Detalle del Pedido"
+             BackgroundColor="#78C6F5">
+    <ScrollView>
+        <StackLayout Padding="30" Spacing="18">
+            <Frame BackgroundColor="#FFE066" CornerRadius="16" Padding="24" HasShadow="True">
+                <StackLayout Spacing="10">
+                    <Label Text="{Binding pedido_id, StringFormat='Pedido #{0}'}"
+                           FontSize="32"
+                           FontAttributes="Bold"
+                           TextColor="#D7263D" />
+                    <Label Text="{Binding mesa_id, StringFormat='Mesa: {0}'}"
+                           FontSize="20"
+                           TextColor="#22223B" />
+                    <Label Text="{Binding mesero, StringFormat='Mesero: {0}'}"
+                           FontSize="20"
+                           TextColor="#22223B" />
+                    <Label Text="{Binding fecha, StringFormat='Fecha: {0:dd/MM/yyyy HH:mm}'}"
+                           FontSize="18"
+                           TextColor="#4A4E69" />
+                </StackLayout>
+            </Frame>
+
+            <Label Text="Platillos:"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#22223B"
+                   Margin="0,10,0,0" />
+
+            <CollectionView ItemsSource="{Binding comanda}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#FFF9C4" CornerRadius="10" Padding="12" Margin="0,6,0,0" HasShadow="False">
+                            <StackLayout Orientation="Horizontal" Spacing="12">
+                                <Label Text="{Binding platillo}" FontSize="18" TextColor="#22223B" />
+                                <Label Text="{Binding cantidad, StringFormat='x{0}'}" FontSize="18" TextColor="#D7263D" FontAttributes="Bold"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

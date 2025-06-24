@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.Comida"
+             BackgroundColor="#FFE066"
+             Title="Comida">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IconImageSource="carrito.png"
+            Text="Carrito"
+            Order="Primary"
+            Priority="0"
+            Clicked="AbrirCarrito_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label
+                Text="Menú disponible"
+                FontSize="28"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="Black"/>
+
+            <CollectionView x:Name="PlatillosCollection" ItemsLayout="VerticalList" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White"
+                               CornerRadius="20"
+                               Padding="15"
+                               Margin="10"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="{Binding nombre}" 
+                                       FontSize="22" 
+                                       FontAttributes="Bold" 
+                                       TextColor="#333" 
+                                       HorizontalOptions="Center" />
+
+                                <Label Text="{Binding descripcion}" 
+                                       FontSize="14" 
+                                       TextColor="#666"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center" />
+
+                                <Label Text="{Binding precio, StringFormat='Precio: ${0:F2}'}"
+                                       FontSize="14" 
+                                       TextColor="#28A745" 
+                                       HorizontalOptions="Center" />
+
+                                <Button Text="Agregar al carrito"
+                                        BackgroundColor="#DC3545"
+                                        TextColor="White"
+                                        CornerRadius="20"
+                                        WidthRequest="200"
+                                        HorizontalOptions="Center"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="AgregarAlCarrito_Clicked" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

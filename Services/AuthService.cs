@@ -11,7 +11,6 @@ namespace SmartMenu.Services
     {
         private readonly HttpClient _httpClient;
         private readonly string BaseUrl;
-        
 
         public AuthService()
         {
@@ -83,6 +82,41 @@ namespace SmartMenu.Services
             {
                 System.Diagnostics.Debug.WriteLine("❌ Error al registrar usuario: " + ex.Message);
                 return false;
+            }
+        }
+
+        public async Task<string> ObtenerRolAsync(string token)
+        {
+            System.Diagnostics.Debug.WriteLine("Llamando a /rol con token: " + token);
+            var request = new HttpRequestMessage(HttpMethod.Get, $"{BaseUrl}/api/rol");
+            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+            try
+            {
+                var response = await _httpClient.SendAsync(request);
+                System.Diagnostics.Debug.WriteLine("Status code: " + response.StatusCode);
+
+                var json = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine("Respuesta JSON: " + json);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error en la respuesta: " + json);
+                    return null;
+                }
+
+                using var doc = System.Text.Json.JsonDocument.Parse(json);
+                if (doc.RootElement.TryGetProperty("rol", out var rolElement))
+                {
+                    return rolElement.GetString();
+                }
+                System.Diagnostics.Debug.WriteLine("No se encontró el campo 'rol' en la respuesta.");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Excepción en ObtenerRolAsync: " + ex.Message);
+                return null;
             }
         }
 
@@ -331,42 +365,126 @@ namespace SmartMenu.Services
             return JsonConvert.DeserializeObject<List<ReporteInsumoFaltante>>(responseContent);
         }
 
-        public async Task<string> ObtenerRolAsync(string token)
+        public async Task<List<Insumo>> ObtenerInsumosAsync()
         {
-            System.Diagnostics.Debug.WriteLine("Llamando a /rol con token: " + token);
-            var request = new HttpRequestMessage(HttpMethod.Get, $"{BaseUrl}/api/rol");
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
             try
             {
-                var response = await _httpClient.SendAsync(request);
-                System.Diagnostics.Debug.WriteLine("Status code: " + response.StatusCode);
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token))
+                    return null;
 
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{BaseUrl}/api/insumos");
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
                 var json = await response.Content.ReadAsStringAsync();
-                System.Diagnostics.Debug.WriteLine("Respuesta JSON: " + json);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    System.Diagnostics.Debug.WriteLine("Error en la respuesta: " + json);
+                    System.Diagnostics.Debug.WriteLine("Error al obtener insumos: " + json);
                     return null;
                 }
 
-                using var doc = System.Text.Json.JsonDocument.Parse(json);
-                if (doc.RootElement.TryGetProperty("rol", out var rolElement))
+                var insumos = System.Text.Json.JsonSerializer.Deserialize<List<Insumo>>(json, new System.Text.Json.JsonSerializerOptions
                 {
-                    return rolElement.GetString();
-                }
-                System.Diagnostics.Debug.WriteLine("No se encontró el campo 'rol' en la respuesta.");
-                return null;
+                    PropertyNameCaseInsensitive = true
+                });
+
+                return insumos;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Excepción en ObtenerRolAsync: " + ex.Message);
+                System.Diagnostics.Debug.WriteLine("Excepción en ObtenerInsumosAsync: " + ex.Message);
                 return null;
             }
         }
 
+        public async Task<bool> CrearInsumoAsync(Insumo insumo)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token))
+                    return false;
 
+                var url = $"{BaseUrl}/api/insumos";
+                var body = new
+                {
+                    nombre = insumo.Nombre,
+                    stock = insumo.Stock,
+                    unidad = insumo.Unidad,
+                    stock_minimo = insumo.StockMinimo
+                };
+                var json = System.Text.Json.JsonSerializer.Serialize(body);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                request.Content = content;
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al crear insumo: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> ActualizarInsumoAsync(Insumo insumo)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token))
+                    return false;
+
+                var url = $"{BaseUrl}/api/insumos/{insumo.Id}";
+                var body = new
+                {
+                    nombre = insumo.Nombre,
+                    stock = insumo.Stock,
+                    unidad = insumo.Unidad,
+                    stock_minimo = insumo.StockMinimo
+                };
+                var json = System.Text.Json.JsonSerializer.Serialize(body);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                var request = new HttpRequestMessage(HttpMethod.Put, url);
+                request.Content = content;
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al actualizar insumo: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> EliminarInsumoAsync(int id)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token))
+                    return false;
+
+                var url = $"{BaseUrl}/api/insumos/{id}";
+                var request = new HttpRequestMessage(HttpMethod.Delete, url);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al eliminar insumo: " + ex.Message);
+                return false;
+            }
+        }
     }
 }
