@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.usuariosPage"
-             BackgroundColor="#FFF176"  
+             BackgroundColor="#F5787A"  
              Title="Usuarios">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
             <Label Text="Usuarios disponibles" FontSize="20" FontAttributes="Bold"/>
             <!-- Picker para filtrar por rol -->
             <Label Text="Filtrar por rol:" FontSize="16" />
-            <Picker x:Name="rolPicker" SelectedIndexChanged="OnRolPickerChanged">
+            <Picker x:Name="rolPicker" SelectedIndexChanged="OnRolPickerChanged" Background="White">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Todos</x:String>

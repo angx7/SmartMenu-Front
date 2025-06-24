@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.AdminView"
+             BackgroundColor="#F5787A"  
              Title="AdminView">
     <Grid>
         <ScrollView>
@@ -39,24 +40,28 @@
                         TextColor="White"
                         CornerRadius="20"
                         Clicked="OnVerMeserosDisponibles"
+                        Opacity=".9"
                         />
 
                         <Button Text="Agregar Usuario"
                         BackgroundColor="#D32F2F"
                         TextColor="White"
                         CornerRadius="20"
-                        Clicked="OnAgregarUsuarioClicked"/>
+                        Clicked="OnAgregarUsuarioClicked"
+                        Opacity=".9"/>
 
                         <Button Text="Consultar proveedor"
                         BackgroundColor="#D32F2F"
                         TextColor="White"
                         CornerRadius="20"
-                                Clicked="OnVerProveedoresDisponibles"/>
+                        Clicked="OnVerProveedoresDisponibles"
+                        Opacity=".9"/>
 
                         <Button Text="Agregar proveedor"
                         BackgroundColor="#D32F2F"
                         TextColor="White"
                         CornerRadius="20"
+                        Opacity=".9"
                         Clicked="OnAgregarProveedorClicked"/>
 
                         <Button Text="Cerrar sesión" Clicked="OnLogoutClicked" />

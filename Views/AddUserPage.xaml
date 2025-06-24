@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:SmartMenu.ViewModels"
              x:Class="SmartMenu.Views.AddUserPage"
-             BackgroundColor="#FFF176"  
+             BackgroundColor="#F5787A"  
              Title="Registrar Usuario">
 
     <ScrollView>
@@ -26,7 +26,7 @@
                         <VerticalStackLayout Spacing="15">
                             <VerticalStackLayout Spacing="5">
                                 <Label Text="Nombre completo"
-                                       TextColor="#1976D2"
+                                       TextColor="Black"
                                        FontAttributes="Bold"/>
                                 <Entry Placeholder="Ingresar nombre completo"
                                        MaxLength="50"
@@ -37,7 +37,7 @@
                             </VerticalStackLayout>
                             <VerticalStackLayout Spacing="5">
                                 <Label Text="Usuario"
-                                       TextColor="#1976D2"
+                                       TextColor="Black"
                                        FontAttributes="Bold"/>
                                 <Entry Placeholder="Ingresar usuario"
                                        MaxLength="50"
@@ -48,7 +48,7 @@
                             </VerticalStackLayout>
                             <VerticalStackLayout Spacing="5">
                                 <Label Text="Contraseña"
-                                       TextColor="#1976D2"
+                                       TextColor="Black"
                                        FontAttributes="Bold"/>
                                 <Entry Placeholder="Ingresar contraseña"
                                        MaxLength="255"
@@ -60,7 +60,7 @@
                             </VerticalStackLayout>
                             <VerticalStackLayout Spacing="5">
                                 <Label Text="Rol"
-                                   TextColor="#1976D2"
+                                   TextColor="Black"
                                    FontAttributes="Bold"/>
                                 <Picker
                                 Title="Selecciona un rol"

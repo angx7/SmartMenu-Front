@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.registarProveedores"
-             BackgroundColor="#FFF176"  
+             BackgroundColor="#F5787A"  
              Title="Registrar Proveedor">
 
     <ScrollView>
@@ -21,7 +21,7 @@
                         </Border.StrokeShape>
                         <VerticalStackLayout Spacing="15">
                             <VerticalStackLayout Spacing="5">
-                                <Label Text="Nombre" TextColor="#1976D2" FontAttributes="Bold"/>
+                                <Label Text="Nombre" TextColor="Black" FontAttributes="Bold"/>
                                 <Entry Placeholder="Ingresar nombre"
                                        MaxLength="50"
                                        TextColor="Black"
@@ -30,7 +30,7 @@
                                        Text="{Binding Nombre}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Spacing="5">
-                                <Label Text="Contacto" TextColor="#1976D2" FontAttributes="Bold"/>
+                                <Label Text="Contacto" TextColor="Black" FontAttributes="Bold"/>
                                 <Entry Placeholder="Ingresar contacto"
                                        MaxLength="50"
                                        TextColor="Black"
@@ -39,7 +39,7 @@
                                        Text="{Binding Contacto}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Spacing="5">
-                                <Label Text="Teléfono" TextColor="#1976D2" FontAttributes="Bold"/>
+                                <Label Text="Teléfono" TextColor="Black" FontAttributes="Bold"/>
                                 <Entry Placeholder="Ingresar teléfono"
                                        MaxLength="20"
                                        Keyboard="Telephone"
@@ -49,7 +49,7 @@
                                        Text="{Binding Telefono}" />
                             </VerticalStackLayout>
                             <VerticalStackLayout Spacing="5">
-                                <Label Text="Correo" TextColor="#1976D2" FontAttributes="Bold"/>
+                                <Label Text="Correo" TextColor="Black" FontAttributes="Bold"/>
                                 <Entry Placeholder="Ingresar correo"
                                        MaxLength="100"
                                        Keyboard="Email"

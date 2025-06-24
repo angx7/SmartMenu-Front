@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.EditarProveedorPage"
+                          BackgroundColor="#F5787A"  
              Title="Editar Proveedor">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
             <Label Text="Editar proveedor" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
-            <Entry Text="{Binding Nombre}" Placeholder="Nombre" />
-            <Entry Text="{Binding Contacto}" Placeholder="Contacto" />
-            <Entry Text="{Binding Telefono}" Placeholder="Teléfono" Keyboard="Telephone"/>
-            <Entry Text="{Binding Correo}" Placeholder="Correo" Keyboard="Email"/>
+            <Entry Text="{Binding Nombre}" Placeholder="Nombre"   BackgroundColor="White" />
+            <Entry Text="{Binding Contacto}" Placeholder="Contacto"  BackgroundColor="White" />
+            <Entry Text="{Binding Telefono}" Placeholder="Teléfono" Keyboard="Telephone"  BackgroundColor="White"/>
+            <Entry Text="{Binding Correo}" Placeholder="Correo" Keyboard="Email"  BackgroundColor="White"/>
             <Button Text="Guardar cambios"
                     Command="{Binding GuardarCommand}"
                     BackgroundColor="#4CAF50"
