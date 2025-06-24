@@ -13,8 +13,8 @@
                 </Grid.ColumnDefinitions>
                 <ContentView Grid.Column="1">
                     <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
-                        <!--<Image Source="tienditalogo.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>-->
-                        <Label Text="Adminstrador" TextColor="Azure" FontSize="24"
+                        <Image Source="proveedor.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>
+                        <Label Text="Registrar Proveedor" TextColor="Azure" FontSize="24"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"/>
                         <!--Formulario de login-->
