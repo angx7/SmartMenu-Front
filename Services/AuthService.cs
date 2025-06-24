@@ -154,6 +154,39 @@ namespace SmartMenu.Services
             }
         }
 
+        public async Task<bool> CrearInsumoAsync(Insumo insumo)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token))
+                    return false;
+
+                var url = $"{BaseUrl}/api/insumos";
+                var body = new
+                {
+                    nombre = insumo.Nombre,
+                    stock = insumo.Stock,
+                    unidad = insumo.Unidad,
+                    stock_minimo = insumo.StockMinimo
+                };
+                var json = System.Text.Json.JsonSerializer.Serialize(body);
+                var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                request.Content = content;
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al crear insumo: " + ex.Message);
+                return false;
+            }
+        }
+
         public async Task<bool> ActualizarInsumoAsync(Insumo insumo)
         {
             try

@@ -6,16 +6,10 @@ using SmartMenu.Services;
 
 namespace SmartMenu.ViewModels
 {
-    public class EditarInsumoViewModel : INotifyPropertyChanged
+    public class AgregarInsumoViewModel : INotifyPropertyChanged
     {
         private readonly AuthService _authService;
         private readonly INavigation _navigation;
-        private readonly InventarioViewModel _inventarioViewModel;
-
-        public int Id { get; }
-        public string NombreOriginal { get; }
-        public string UnidadOriginal { get; }
-        public string StockMinimoOriginal { get; }
 
         private string _nombre;
         public string Nombre
@@ -45,28 +39,18 @@ namespace SmartMenu.ViewModels
             set { _stockMinimo = value; OnPropertyChanged(); }
         }
 
-        public ICommand ConfirmarCommand { get; }
-        public ICommand EliminarCommand { get; }
+        public ICommand GuardarCommand { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public EditarInsumoViewModel(Insumo insumo, INavigation navigation, InventarioViewModel inventarioViewModel)
+        public AgregarInsumoViewModel(INavigation navigation)
         {
             _authService = new AuthService();
             _navigation = navigation;
-            _inventarioViewModel = inventarioViewModel;
-
-            Id = insumo.Id;
-            Nombre = insumo.Nombre;
-            Stock = insumo.Stock;
-            Unidad = insumo.Unidad;
-            StockMinimo = insumo.StockMinimo;
-
-            ConfirmarCommand = new Command(async () => await Confirmar());
-            EliminarCommand = new Command(async () => await Eliminar());
+            GuardarCommand = new Command(async () => await Guardar());
         }
 
-        private async Task Confirmar()
+        private async Task Guardar()
         {
             if (string.IsNullOrWhiteSpace(Nombre) ||
                 string.IsNullOrWhiteSpace(Stock) ||
@@ -85,43 +69,23 @@ namespace SmartMenu.ViewModels
                 return;
             }
 
-            var insumoActualizado = new Insumo
+            var nuevo = new Insumo
             {
-                Id = Id,
                 Nombre = Nombre,
-                Stock = stockDecimal.ToString(), // Si tu backend espera string, envía como string
+                Stock = stockDecimal.ToString(),
                 Unidad = Unidad,
                 StockMinimo = stockMinDecimal.ToString()
             };
 
-            var exito = await _authService.ActualizarInsumoAsync(insumoActualizado);
+            var exito = await _authService.CrearInsumoAsync(nuevo);
             if (exito)
             {
-                await App.Current.MainPage.DisplayAlert("Éxito", "Insumo actualizado", "OK");
-                await _inventarioViewModel.Refrescar();
+                await App.Current.MainPage.DisplayAlert("Éxito", "Insumo creado", "OK");
                 await _navigation.PopAsync();
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", "No se pudo actualizar el insumo", "OK");
-            }
-        }
-
-        private async Task Eliminar()
-        {
-            var confirmar = await App.Current.MainPage.DisplayAlert("Eliminar", "¿Seguro que deseas eliminar este insumo?", "Sí", "No");
-            if (!confirmar) return;
-
-            var exito = await _authService.EliminarInsumoAsync(Id);
-            if (exito)
-            {
-                await App.Current.MainPage.DisplayAlert("Eliminado", "Insumo eliminado", "OK");
-                await _inventarioViewModel.Refrescar();
-                await _navigation.PopAsync();
-            }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar el insumo", "OK");
+                await App.Current.MainPage.DisplayAlert("Error", "No se pudo crear el insumo", "OK");
             }
         }
 

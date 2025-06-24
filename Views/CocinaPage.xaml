@@ -3,39 +3,57 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
             x:Class="SmartMenu.Views.CocinaPage"  
             Title="CocinaPage"  
-            Background="Red">  
-   <ScrollView>  
-       <Grid Padding="30" RowSpacing="25">  
-           <Grid.RowDefinitions>  
-               <RowDefinition Height="Auto" />  
-               <RowDefinition Height="Auto" />  
-               <RowDefinition Height="Auto" />  
-           </Grid.RowDefinitions>  
+            Background="Red">
+    <ScrollView>
+        <Grid Padding="30" RowSpacing="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <!-- Nueva fila para el botón de logout -->
+            </Grid.RowDefinitions>
 
-           <Label Text="Cocina"  
+            <Label Text="Cocina"  
                   FontSize="36"  
                   FontAttributes="Bold"  
                   HorizontalOptions="Center"  
                   VerticalOptions="Start"  
                   Margin="0,20,0,0"  
                   TextColor="White"  
-                  Grid.Row="0" />  
+                  Grid.Row="0" />
 
-           <Button Text="Consultar Inventario"  
+            <Button Text="Consultar Inventario"  
                    Clicked="Button_Clicked"
                    BackgroundColor="#FFE066"  
                    TextColor="Black"  
                    CornerRadius="10"  
                    Padding="15"  
-                   Grid.Row="1" />  
+                   Grid.Row="1" />
 
-           <Button Text="Ver Pedidos"  
+            <Button Text="Ver Pedidos"  
                    Clicked="Button_Clicked_1"
                    BackgroundColor="#FFE066"  
                    TextColor="Black"  
                    CornerRadius="10"  
                    Padding="15"  
-                   Grid.Row="2" />  
-       </Grid>  
-   </ScrollView>  
+                   Grid.Row="2" />
+
+            <Button Text="Agregar insumo"
+                    Clicked="OnAgregarInsumoClicked"
+                    BackgroundColor="#FFE066"
+                    TextColor="Black"  
+                    CornerRadius="10"  
+                    Padding="15"  
+                    Grid.Row="3" />
+
+            <Button Text="Cerrar sesión"
+                   Clicked="OnLogoutClicked"
+                   BackgroundColor="DarkRed"
+                   TextColor="White"
+                   Grid.Row="4"/>
+            <!-- Aquí se asigna la fila correcta -->
+        </Grid>
+    </ScrollView>
 </ContentPage>
