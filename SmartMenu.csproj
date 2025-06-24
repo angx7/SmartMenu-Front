@@ -92,6 +92,9 @@
 		<MauiXaml Update="Views\Comida.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\DetallePedidoPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Views\EditarInsumoPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

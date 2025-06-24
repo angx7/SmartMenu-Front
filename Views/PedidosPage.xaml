@@ -1,76 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:SmartMenu.ViewModels"
              x:Class="SmartMenu.Views.PedidosPage"
-             Title="PedidosPage"
+             Title="Pedidos"
              BackgroundColor="Red">
+    <ContentPage.BindingContext>
+        <viewModels:PedidosViewModel />
+    </ContentPage.BindingContext>
     <ScrollView>
-        <Grid Padding="30" RowSpacing="20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
+        <StackLayout Padding="30" Spacing="20">
             <Label Text="Pedidos"
                    FontSize="36"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   VerticalOptions="Start"
-                   Margin="0,20,0,0"
-                   TextColor="White"
-                   Grid.Row="0" />
-
-
-            <Button Text="Pedido #001 - 23/06/2025 - Mesa 5"
-                    Command="{Binding ViewOrderDetailCommand}"
-                    CommandParameter="001"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="2" />
-
-            <Button Text="Pedido #002 - 23/06/2025 - Mesa 2"
-                    Command="{Binding ViewOrderDetailCommand}"
-                    CommandParameter="002"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="3" />
-
-            <Button Text="Pedido #003 - 23/06/2025 - Mesa 7"
-                    Command="{Binding ViewOrderDetailCommand}"
-                    CommandParameter="003"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="4" />
-
-            <Button Text="Pedido #004 - 23/06/2025 - Mesa 1"
-                    Command="{Binding ViewOrderDetailCommand}"
-                    CommandParameter="004"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="5" />
-
-            <Button Text="Pedido #005 - 23/06/2025 - Mesa 3"
-                    Command="{Binding ViewOrderDetailCommand}"
-                    CommandParameter="005"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="6" />
-
-        </Grid>
+                   TextColor="White" />
+            <CollectionView ItemsSource="{Binding Pedidos}" SelectionMode="Single" x:Name="PedidosCollection"
+                            SelectionChanged="PedidosCollection_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#FFE066" CornerRadius="10" Padding="15" Margin="0,10,0,0">
+                            <StackLayout>
+                                <Label Text="{Binding pedido_id, StringFormat='Pedido #{0}'}" FontAttributes="Bold" />
+                                <Label Text="{Binding fecha, StringFormat='Fecha: {0}'}" />
+                                <Label Text="{Binding mesa_id, StringFormat='Mesa: {0}'}" />
+                                <Label Text="{Binding mesero, StringFormat='Mesero: {0}'}" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </ScrollView>
 </ContentPage>
