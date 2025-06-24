@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:SmartMenu.ViewModels"
              x:Class="SmartMenu.Views.AddUserPage"
+             BackgroundColor="#FFF176"  
              Title="Registrar Usuario">
 
     <ScrollView>
@@ -14,8 +15,8 @@
             </Grid.ColumnDefinitions>
             <ContentView Grid.Column="1" Padding="0,40,0,40">
                 <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
-                    <Image Source="tienditalogo.png" HeightRequest="120" HorizontalOptions="Center"/>
-                    <Label Text="Administrador" TextColor="Black" FontSize="24"
+                    <!--<Image Source="agregarusuario.png" HeightRequest="120" HorizontalOptions="Center"/>-->
+                    <Label Text="Registrar Usuario" TextColor="Black" FontSize="24"
                            FontAttributes="Bold"
                            HorizontalOptions="Center"/>
                     <Border BackgroundColor="White" Padding="20">
