@@ -14,7 +14,7 @@
             </Grid.ColumnDefinitions>
             <ContentView Grid.Column="1" Padding="0,40,0,40">
                 <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
-                    <Label Text="Registrar Proveedor" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="Registrar Proveedor" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="Black"/>
                     <Border BackgroundColor="White" Padding="20">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"/>
