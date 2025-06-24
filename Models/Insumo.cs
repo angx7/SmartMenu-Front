@@ -2,14 +2,17 @@
 
 namespace SmartMenu.Models
 {
-    public class Insumo
+       public class Insumo
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public string Stock { get; set; } // Confirmado como string debido al error anterior
+        public string Stock { get; set; }
         public string Unidad { get; set; }
 
-        [JsonPropertyName("stock_minimo")] // ¡CRUCIAL! Mapea el JSON "stock_minimo"
-        public string StockMinimo { get; set; } // ¡CRUCIAL! Nombre de la propiedad en C# (PascalCase)
+        [JsonPropertyName("stock_minimo")]
+        public string StockMinimo { get; set; }
+
+        public int ProveedorId { get; set; }
+        public decimal Precio { get; set; }
     }
 }

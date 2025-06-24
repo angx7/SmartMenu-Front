@@ -39,6 +39,20 @@ namespace SmartMenu.ViewModels
             set { _stockMinimo = value; OnPropertyChanged(); }
         }
 
+        private string _precio;
+        public string Precio
+        {
+            get => _precio;
+            set { _precio = value; OnPropertyChanged(); }
+        }
+
+        private string _proveedorId;
+        public string ProveedorId
+        {
+            get => _proveedorId;
+            set { _proveedorId = value; OnPropertyChanged(); }
+        }
+
         public ICommand GuardarCommand { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -55,17 +69,20 @@ namespace SmartMenu.ViewModels
             if (string.IsNullOrWhiteSpace(Nombre) ||
                 string.IsNullOrWhiteSpace(Stock) ||
                 string.IsNullOrWhiteSpace(Unidad) ||
-                string.IsNullOrWhiteSpace(StockMinimo))
+                string.IsNullOrWhiteSpace(StockMinimo) ||
+                string.IsNullOrWhiteSpace(ProveedorId) ||
+                string.IsNullOrWhiteSpace(Precio))
             {
                 await App.Current.MainPage.DisplayAlert("Error", "Todos los campos son obligatorios.", "OK");
                 return;
             }
 
-            // Validar que Stock y StockMinimo sean números decimales válidos
             if (!decimal.TryParse(Stock, out var stockDecimal) ||
-                !decimal.TryParse(StockMinimo, out var stockMinDecimal))
+                !decimal.TryParse(StockMinimo, out var stockMinDecimal) ||
+                !decimal.TryParse(Precio, out var precioDecimal) ||
+                !int.TryParse(ProveedorId, out var proveedorIdInt))
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Stock y Stock Mínimo deben ser números válidos.", "OK");
+                await App.Current.MainPage.DisplayAlert("Error", "Stock, Stock Mínimo, Precio y Proveedor ID deben ser válidos.", "OK");
                 return;
             }
 
@@ -74,7 +91,9 @@ namespace SmartMenu.ViewModels
                 Nombre = Nombre,
                 Stock = stockDecimal.ToString(),
                 Unidad = Unidad,
-                StockMinimo = stockMinDecimal.ToString()
+                StockMinimo = stockMinDecimal.ToString(),
+                Precio = precioDecimal,
+                ProveedorId = proveedorIdInt
             };
 
             var exito = await _authService.CrearInsumoAsync(nuevo);

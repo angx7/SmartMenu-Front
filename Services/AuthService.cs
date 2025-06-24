@@ -413,7 +413,10 @@ namespace SmartMenu.Services
                     nombre = insumo.Nombre,
                     stock = insumo.Stock,
                     unidad = insumo.Unidad,
-                    stock_minimo = insumo.StockMinimo
+                    stock_minimo = insumo.StockMinimo,
+                    proveedor_id = insumo.ProveedorId,
+                    precio = insumo.Precio
+
                 };
                 var json = System.Text.Json.JsonSerializer.Serialize(body);
                 var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
@@ -447,6 +450,7 @@ namespace SmartMenu.Services
                     stock = insumo.Stock,
                     unidad = insumo.Unidad,
                     stock_minimo = insumo.StockMinimo
+
                 };
                 var json = System.Text.Json.JsonSerializer.Serialize(body);
                 var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");

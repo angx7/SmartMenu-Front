@@ -10,6 +10,9 @@
         <Entry Text="{Binding Stock}" Placeholder="Stock" Keyboard="Numeric" Background="wheat"/>
         <Entry Text="{Binding Unidad}" Placeholder="Unidad" Background="wheat"/>
         <Entry Text="{Binding StockMinimo}" Placeholder="Stock Mínimo" Keyboard="Numeric" Background="wheat"/>
+        <Entry Text="{Binding Precio}" Placeholder="Precio del proveedor" Keyboard="Numeric" Background="wheat"/>
+        <Entry Text="{Binding ProveedorId}" Placeholder="ID del proveedor" Keyboard="Numeric" Background="wheat"/>
+
         <Button Text="Guardar" Command="{Binding GuardarCommand}" />
     </VerticalStackLayout>
 </ContentPage>
