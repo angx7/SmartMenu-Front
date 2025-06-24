@@ -21,5 +21,11 @@ namespace SmartMenu.Models
 
         [JsonProperty("telefono")]
         public string Telefono { get; set; }
+
+        [JsonProperty("contacto")]
+        public string Contacto { get; set; }
+
+        [JsonProperty("correo")]
+        public string Correo { get; set; }
     }
 }

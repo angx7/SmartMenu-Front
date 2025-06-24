@@ -7,5 +7,6 @@
         <VerticalStackLayout x:Name="ProveedoresLayout" Padding="20" Spacing="10">
             <Label Text="Proveedores disponibles" FontSize="20" FontAttributes="Bold"/>
         </VerticalStackLayout>
+
     </ScrollView>
 </ContentPage>
