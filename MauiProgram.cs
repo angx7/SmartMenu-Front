@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DotNetEnv;
+using Microsoft.Extensions.Logging;
 
 namespace SmartMenu
 {
@@ -6,6 +7,7 @@ namespace SmartMenu
     {
         public static MauiApp CreateMauiApp()
         {
+            Env.Load(".env");
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
