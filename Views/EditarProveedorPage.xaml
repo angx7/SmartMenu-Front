@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.EditarProveedorPage"
+             Title="Editar Proveedor">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Editar proveedor" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <Entry Text="{Binding Nombre}" Placeholder="Nombre" />
+            <Entry Text="{Binding Contacto}" Placeholder="Contacto" />
+            <Entry Text="{Binding Telefono}" Placeholder="Teléfono" Keyboard="Telephone"/>
+            <Entry Text="{Binding Correo}" Placeholder="Correo" Keyboard="Email"/>
+            <Button Text="Guardar cambios"
+                    Command="{Binding GuardarCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="15"/>
+            <Button Text="Eliminar proveedor"
+                    Command="{Binding EliminarCommand}"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    CornerRadius="15"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

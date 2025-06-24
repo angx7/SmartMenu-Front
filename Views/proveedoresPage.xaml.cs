@@ -1,14 +1,20 @@
-namespace SmartMenu.Views;
 using SmartMenu.Models;
-using Newtonsoft.Json;
+using SmartMenu.Services;
+
+namespace SmartMenu.Views;
 
 public partial class proveedoresPage : ContentPage
 {
-    private const string apiUrl = "https://da63-2a09-bac1-50c0-60-00-9f-37.ngrok-free.app/api/clientes";
+    private readonly AuthService _authService = new();
 
     public proveedoresPage()
     {
         InitializeComponent();
+        CargarProveedores();
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
         CargarProveedores();
     }
 
@@ -16,34 +22,46 @@ public partial class proveedoresPage : ContentPage
     {
         try
         {
-            using var client = new HttpClient();
-            var response = await client.GetStringAsync(apiUrl);
-            var datos = JsonConvert.DeserializeObject<List<Usuario>>(response);
+            var proveedores = await _authService.ObtenerProveedoresAsync();
 
-            var proveedores = datos.Where(p => p.Rol_Id == 2).ToList();
+            if (proveedores is null || proveedores.Count == 0)
+            {
+                await DisplayAlert("Atención", "No se encontraron proveedores.", "OK");
+                return;
+            }
+
+            ProveedoresLayout.Children.Clear();
 
             foreach (var proveedor in proveedores)
             {
+                var info = $"{proveedor.Nombre}\nContacto: {proveedor.Contacto}\nTel: {proveedor.Telefono}\nCorreo: {proveedor.Correo}";
+
                 var boton = new Button
                 {
-                    Text = $"{proveedor.Nombre} - {proveedor.Rol_Id}",
+                    Text = info,
                     BackgroundColor = Colors.Red,
                     TextColor = Colors.White,
-                    CornerRadius = 20
+                    CornerRadius = 20,
+                    Padding = new Thickness(10),
+                    FontSize = 14
                 };
 
-                boton.Clicked += (s, e) =>
+                // Navegación a edición
+                boton.Clicked += async (s, e) =>
                 {
-                    if (proveedor.Rol_Id == null)
-                        PhoneDialer.Open(proveedor.Contraseña);
+                    await Navigation.PushAsync(new EditarProveedorPage(proveedor));
                 };
 
                 ProveedoresLayout.Children.Add(boton);
             }
         }
+        catch (UnauthorizedAccessException ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
+        }
         catch (Exception ex)
         {
-            await DisplayAlert("Error", $"No se pudo cargar proveedores: {ex.Message}", "OK");
+            await DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
         }
     }
 }

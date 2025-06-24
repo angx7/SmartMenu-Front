@@ -1,8 +1,9 @@
-﻿using System.Text;
-using System.Net.Http.Headers;
+﻿using Microsoft.Maui.Storage;
 using Newtonsoft.Json;
 using SmartMenu.Models;
-using Microsoft.Maui.Storage;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace SmartMenu.Services
 {
@@ -162,6 +163,34 @@ namespace SmartMenu.Services
             }
         }
 
+        public async Task<List<Proveedor>> ObtenerProveedoresAsync()
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token)) return null;
+
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{BaseUrl}/api/proveedores");
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                var json = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == HttpStatusCode.Forbidden)
+                    throw new UnauthorizedAccessException("No tienes permiso para acceder a esta ruta (403).");
+
+                if (!response.IsSuccessStatusCode)
+                    throw new Exception($"Error del servidor: {response.StatusCode}");
+
+                return JsonConvert.DeserializeObject<List<Proveedor>>(json);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al obtener proveedores: " + ex.Message);
+                return null;
+            }
+        }
+
         public async Task<bool> RegistrarProveedor(ProveedorRequest proveedor)
         {
             try
@@ -185,6 +214,52 @@ namespace SmartMenu.Services
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("❌ Error al registrar usuario: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> ActualizarProveedorAsync(int id, ProveedorRequest proveedor)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token)) return false;
+
+                var json = JsonConvert.SerializeObject(proveedor);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var request = new HttpRequestMessage(HttpMethod.Put, $"{BaseUrl}/api/proveedores/{id}");
+                request.Content = content;
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                var responseContent = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine("Respuesta API: " + responseContent);
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al actualizar proveedor: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> EliminarProveedorAsync(int id)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token)) return false;
+
+                var request = new HttpRequestMessage(HttpMethod.Delete, $"{BaseUrl}/api/proveedores/{id}");
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al eliminar proveedor: " + ex.Message);
                 return false;
             }
         }
