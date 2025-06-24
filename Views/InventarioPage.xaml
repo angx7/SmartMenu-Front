@@ -1,86 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SmartMenu.Views.InventarioPage"
-             Title="InventarioPage"
-             BackgroundColor="Red">
-    <ScrollView>
-        <Grid Padding="30" RowSpacing="20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            x:Class="SmartMenu.Views.InventarioPage"  
+            xmlns:models="clr-namespace:SmartMenu.Models"  
+            Title="InventarioPage"  
+            BackgroundColor="Red">  
 
-            <Label Text="Inventario"
-                   FontSize="36"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Start"
-                   Margin="0,20,0,0"
-                   TextColor="White"
-                   Grid.Row="0" />
+   <ScrollView>  
+       <Grid Padding="30" RowSpacing="20">  
+           <Grid.RowDefinitions>  
+               <RowDefinition Height="Auto" />  
+               <RowDefinition Height="*" />  
+           </Grid.RowDefinitions>  
 
-            <BoxView Grid.Row="1" />
+           <Label Text="Inventario"  
+                  FontSize="36"  
+                  FontAttributes="Bold"  
+                  HorizontalOptions="Center"  
+                  VerticalOptions="Start"  
+                  Margin="0,20,0,0"  
+                  TextColor="White"  
+                  Grid.Row="0" />  
 
-            <Button Text="Comida 1"
-                    Command="{Binding NavigateToProductDetailCommand}"
-                    CommandParameter="Comida 1"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="2" />
+           <CollectionView Grid.Row="1" ItemsSource="{Binding Insumos}"  
+                           VerticalOptions="Fill"  
+                           HorizontalOptions="Fill"> <!-- Updated to 'Fill' -->  
+               <CollectionView.ItemTemplate>  
+                   <DataTemplate x:DataType="models:Insumo">  
+                       <Border Padding="20"  
+                               Margin="0,0,0,25"  
+                               StrokeShape="RoundRectangle"  
+                               StrokeThickness="0"  
+                               BackgroundColor="#FFE066"  
+                               HorizontalOptions="Fill"> <!-- Updated to 'Fill' -->  
 
-            <Button Text="Comida 2"
-                    Command="{Binding NavigateToProductDetailCommand}"
-                    CommandParameter="Comida 2"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="3" />
+                           <Border.GestureRecognizers>  
+                               <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToProductDetailCommand}"  
+                                                     CommandParameter="{Binding .}"/>  
+                           </Border.GestureRecognizers>  
 
-            <Button Text="Comida 3"
-                    Command="{Binding NavigateToProductDetailCommand}"
-                    CommandParameter="Comida 3"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="4" />
+                           <StackLayout Orientation="Vertical" Spacing="5">  
+                               <Label Text="{Binding Nombre}"  
+                                      FontSize="Medium"  
+                                      FontAttributes="Bold"  
+                                      TextColor="Black"/>  
 
-            <Button Text="Comida 4"
-                    Command="{Binding NavigateToProductDetailCommand}"
-                    CommandParameter="Comida 4"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="5" />
+                               <StackLayout Orientation="Horizontal">  
+                                   <Label Text="ID: " FontAttributes="Bold" TextColor="Black"/>  
+                                   <Label Text="{Binding Id}" TextColor="Black"/>  
+                               </StackLayout>  
 
-            <Button Text="Comida 5"
-                    Command="{Binding NavigateToProductDetailCommand}"
-                    CommandParameter="Comida 5"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="6" />
+                               <StackLayout Orientation="Horizontal">  
+                                   <Label Text="Stock: " FontAttributes="Bold" TextColor="Black"/>  
+                                   <Label Text="{Binding Stock}" TextColor="Black"/>  
+                                   <Label Text="{Binding Unidad}" Margin="5,0,0,0" TextColor="Black"/>  
+                               </StackLayout>  
 
-            <Button Text="Comida 6"
-                    Command="{Binding NavigateToProductDetailCommand}"
-                    CommandParameter="Comida 6"
-                    BackgroundColor="#FFE066"
-                    TextColor="Black"
-                    CornerRadius="10"
-                    Padding="15"
-                    Grid.Row="7" />
-        </Grid>
-    </ScrollView>
+                               <StackLayout Orientation="Horizontal">  
+                                   <Label Text="Stock Mínimo: " FontAttributes="Bold" TextColor="Black"/>  
+                                   <Label Text="{Binding StockMinimo}" TextColor="Black"/>  
+                               </StackLayout>  
+
+                           </StackLayout>  
+                       </Border>  
+                   </DataTemplate>  
+               </CollectionView.ItemTemplate>  
+           </CollectionView>  
+       </Grid>  
+   </ScrollView>  
 </ContentPage>
