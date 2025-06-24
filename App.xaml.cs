@@ -11,6 +11,7 @@ public partial class App : Application
 
         // Esto elimina el uso de AppShell y usa NavigationPage con HomePage como raíz
         MainPage = new NavigationPage(new Views.HomePage());
+
     }
 }
 

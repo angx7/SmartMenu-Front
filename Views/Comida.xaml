@@ -28,24 +28,35 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Frame BackgroundColor="White" CornerRadius="15" Padding="15" HasShadow="True" WidthRequest="300">
+                                <VerticalStackLayout Spacing="10">
+                                    <Label Text="{Binding Nombre}" 
+                                           FontSize="20" 
+                                           FontAttributes="Bold" 
+                                           TextColor="Black" 
+                                           HorizontalOptions="Center" />
 
-                            <Border StrokeThickness="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 20">
-                                <Image Source="{Binding Imagen}"
-                                       WidthRequest="150"
-                                       HeightRequest="150"
-                                       Aspect="AspectFill" />
-                            </Border>
+                                    <Label Text="{Binding Descripcion}" 
+                                           FontSize="14" 
+                                           TextColor="Gray"
+                                           HorizontalOptions="Center" 
+                                           HorizontalTextAlignment="Center" />
 
-                            <Label Text="{Binding Nombre}" FontSize="18" TextColor="Black" HorizontalOptions="Center" />
-                            <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="14" TextColor="DarkGreen" HorizontalOptions="Center" />
+                                    <Label Text="{Binding Precio, StringFormat='Precio: ${0:F2}'}" 
+                                           FontSize="14" 
+                                           TextColor="DarkGreen" 
+                                           HorizontalOptions="Center" />
 
-                            <Button Text="Agregar al carrito"
-                                    BackgroundColor="#DC3545"
-                                    TextColor="White"
-                                    CornerRadius="20"
-                                    WidthRequest="180"
-                                    CommandParameter="{Binding .}"
-                                    Clicked="AgregarAlCarrito_Clicked" />
+                                    <Button Text="Agregar al carrito"
+                                            BackgroundColor="#DC3545"
+                                            TextColor="White"
+                                            CornerRadius="20"
+                                            WidthRequest="180"
+                                            Margin="0,15,0,0"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="AgregarAlCarrito_Clicked" />
+                                </VerticalStackLayout>
+                            </Frame>
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

@@ -17,18 +17,21 @@
             <CollectionView x:Name="ListaCarrito">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="LightGray" CornerRadius="15" Padding="10">
-                            <HorizontalStackLayout Spacing="15">
-                                <Image Source="{Binding Imagen}"
-                                       WidthRequest="60"
-                                       HeightRequest="60"
-                                       Aspect="AspectFill" />
+                        <Frame BackgroundColor="White"
+                               BorderColor="LightGray"
+                               CornerRadius="15"
+                               Padding="15"
+                               Margin="0,0,0,10">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Nombre}"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
 
-                                <VerticalStackLayout>
-                                    <Label Text="{Binding Nombre}" FontSize="18" TextColor="Black" />
-                                    <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="14" TextColor="DarkGreen" />
-                                </VerticalStackLayout>
-                            </HorizontalStackLayout>
+                                <Label Text="{Binding Precio, StringFormat='${0:F2}'}"
+                                       FontSize="14"
+                                       TextColor="DarkGreen" />
+                            </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

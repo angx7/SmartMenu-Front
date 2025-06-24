@@ -7,11 +7,11 @@ namespace SmartMenu.Views
 {
     public partial class Comida : ContentPage
     {
-        // Modelo del platillo
+        // Modelo del platillo actualizado
         public class Platillo
         {
             public string Nombre { get; set; }
-            public string Imagen { get; set; }
+            public string Descripcion { get; set; }
             public decimal Precio { get; set; }
         }
 
@@ -25,25 +25,25 @@ namespace SmartMenu.Views
             this.mesaId = mesaId;
             Title = $"Pedido - Mesa {mesaId}";
 
-            // Inicializa la lista de platillos (simulados)
+            // Lista de platillos con descripciones
             platillos.Add(new Platillo
             {
                 Nombre = "Hamburguesa",
-                Imagen = "hamburguesa.png",
+                Descripcion = "Clásica hamburguesa con carne de res, queso y vegetales.",
                 Precio = 120
             });
 
             platillos.Add(new Platillo
             {
                 Nombre = "Ensalada",
-                Imagen = "ensalada.png",
+                Descripcion = "Ensalada fresca con lechuga, jitomate, pepino y aderezo.",
                 Precio = 90
             });
 
             platillos.Add(new Platillo
             {
                 Nombre = "Pizza Pepperoni",
-                Imagen = "pizza.png",
+                Descripcion = "Pizza con salsa de tomate, queso mozzarella y pepperoni.",
                 Precio = 150
             });
 
