@@ -15,6 +15,12 @@ public partial class usuariosPage : ContentPage
         CargarUsuarios();
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        CargarUsuarios();
+    }
+
     private async void CargarUsuarios()
     {
         try
@@ -71,9 +77,9 @@ public partial class usuariosPage : ContentPage
                 CornerRadius = 20
             };
 
-            boton.Clicked += (s, e) =>
+            boton.Clicked += async (s, e) =>
             {
-                DisplayAlert("Sin teléfono", "Este usuario no tiene número registrado.", "OK");
+                await Navigation.PushAsync(new EditarUsuarioPage(usuario));
             };
 
             usuariosLayout.Children.Add(boton);

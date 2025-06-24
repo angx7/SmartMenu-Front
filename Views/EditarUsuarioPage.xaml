@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="SmartMenu.Views.EditarUsuarioPage"  
+             Title="Editar Usuario">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="Editar Usuario" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+            <Label Text="Nombre"/>
+            <Entry Text="{Binding Nombre}" Placeholder="Nombre"/>
+
+            <Label Text="Usuario"/>
+            <Entry Text="{Binding Usuario}" Placeholder="Usuario"/>
+
+            <Label Text="Rol"/>
+            <Picker SelectedIndex="{Binding RolIndex, Mode=TwoWay}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Administrador</x:String>
+                        <x:String>Mesero</x:String>
+                        <x:String>Cocinero</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Guardar Cambios" Command="{Binding GuardarCommand}" BackgroundColor="#4CAF50" TextColor="White"/>
+            <Button Text="Eliminar Usuario" Command="{Binding EliminarCommand}" BackgroundColor="Red" TextColor="White"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

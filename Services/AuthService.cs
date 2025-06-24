@@ -113,6 +113,55 @@ namespace SmartMenu.Services
             }
         }
 
+        public async Task<bool> ActualizarUsuarioAsync(Usuario usuario)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token)) return false;
+
+                var json = JsonConvert.SerializeObject(usuario);
+                System.Diagnostics.Debug.WriteLine($"Id a actualizar: {usuario.Id}");
+                System.Diagnostics.Debug.WriteLine("JSON enviado: " + json);
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var request = new HttpRequestMessage(HttpMethod.Put, $"{BaseUrl}/api/usuarios/{usuario.Id}");
+                request.Content = content;
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                var responseContent = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine("Respuesta API: " + responseContent);
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al actualizar usuario: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> EliminarUsuarioAsync(int id)
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token)) return false;
+
+                var request = new HttpRequestMessage(HttpMethod.Delete, $"{BaseUrl}/api/usuarios/{id}");
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error al eliminar usuario: " + ex.Message);
+                return false;
+            }
+        }
+
         public async Task<bool> RegistrarProveedor(ProveedorRequest proveedor)
         {
             try
