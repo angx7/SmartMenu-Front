@@ -8,14 +8,10 @@ namespace SmartMenu.Views;
 
 public partial class MeseroPage : ContentPage
 {
-<<<<<<< HEAD:Views/MeseroPage.xaml.cs
-    public MeseroPage()
-=======
     private readonly HttpClient _httpClient;
     private readonly string BaseUrl;
 
-    public HomePage()
->>>>>>> adf4092da7b907bbf3487f01390da799a18daec4:Views/HomePage.xaml.cs
+    public MeseroPage()
     {
         InitializeComponent();
         _httpClient = new HttpClient();
@@ -58,22 +54,4 @@ public partial class MeseroPage : ContentPage
 
             var data = JsonConvert.DeserializeObject<PedidoMesaResponse>(responseText);
 
-            await Navigation.PushAsync(new ComandaPage(mesaId, data.pedido_id, data.nuevo, data.detalles, data.total));
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", ex.Message, "OK");
-        }
-    }
-
-    private async void Mesa1_Clicked(object sender, EventArgs e) => await IrAMesa(1);
-    private async void Mesa2_Clicked(object sender, EventArgs e) => await IrAMesa(2);
-    private async void Mesa3_Clicked(object sender, EventArgs e) => await IrAMesa(3);
-
-    private async void OnLogoutClicked(object sender, EventArgs e)
-    {
-        Preferences.Clear();
-        await Task.Delay(100);
-        Application.Current.MainPage = new NavigationPage(new LoginPage());
-    }
-}
+            await 
