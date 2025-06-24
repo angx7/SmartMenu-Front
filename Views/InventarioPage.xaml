@@ -4,7 +4,7 @@
              x:Class="SmartMenu.Views.InventarioPage"  
              xmlns:models="clr-namespace:SmartMenu.Models"  
              Title="InventarioPage"  
-             BackgroundColor="#78C6F5">
+             BackgroundColor="#FFE066">
 
     <ScrollView>
         <Grid Padding="30" RowSpacing="20">

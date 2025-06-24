@@ -4,7 +4,7 @@
              xmlns:viewModels="clr-namespace:SmartMenu.ViewModels"
              x:Class="SmartMenu.Views.PedidosPage"
              Title="Pedidos"
-             BackgroundColor="#78C6F5">
+             BackgroundColor="#FFE066">
     <ContentPage.BindingContext>
         <viewModels:PedidosViewModel />
     </ContentPage.BindingContext>

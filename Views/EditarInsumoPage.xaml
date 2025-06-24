@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.EditarInsumoPage"
-             Background="#78C6F5"
+             Background="#FFE066"
              Title="Editar Insumo">
     <VerticalStackLayout Padding="20" Spacing="15">
         <Label Text="Editar Insumo" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>

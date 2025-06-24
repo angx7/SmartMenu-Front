@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.DetallePedidoPage"
              Title="Detalle del Pedido"
-             BackgroundColor="#78C6F5">
+             BackgroundColor="#FFE066">
     <ScrollView>
         <StackLayout Padding="30" Spacing="18">
             <Frame BackgroundColor="#FFE066" CornerRadius="16" Padding="24" HasShadow="True">
