@@ -95,9 +95,6 @@
 		<MauiXaml Update="Views\EditarInsumoPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
-		<MauiXaml Update="Views\MeseroPage.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
 		<MauiXaml Update="Views\CocinaPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -107,6 +104,9 @@
 		<MauiXaml Update="Views\LoginPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Views\MeseroPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Views\PedidosPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -114,12 +114,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Globals\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Views\MeseroPage.xaml.cs">
-	    <DependentUpon>MeseroPage.xaml</DependentUpon>
-	  </Compile>
 	</ItemGroup>
 
 </Project>
