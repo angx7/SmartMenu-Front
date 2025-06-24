@@ -3,7 +3,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
             x:Class="SmartMenu.Views.CocinaPage"  
             Title="CocinaPage"  
-            Background="#78C6F5">
+            Background="#FFE066">
     <ScrollView>
         <Grid Padding="30" RowSpacing="25">
             <Grid.RowDefinitions>

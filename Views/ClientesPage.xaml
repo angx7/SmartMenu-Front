@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.ClientesPage"
              Title="Clientes Frecuentes"
-             BackgroundColor="#FFFDE7">
+             BackgroundColor="#FFE066">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
