@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.EditarInsumoPage"
+             Background="#78C6F5"
              Title="Editar Insumo">
     <VerticalStackLayout Padding="20" Spacing="15">
         <Label Text="Editar Insumo" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
-        <Entry Text="{Binding Nombre}" Placeholder="Nombre"/>
-        <Entry Text="{Binding Stock}" Placeholder="Stock" Keyboard="Numeric"/>
-        <Entry Text="{Binding Unidad}" Placeholder="Unidad"/>
-        <Entry Text="{Binding StockMinimo}" Placeholder="Stock Mínimo" Keyboard="Numeric"/>
+        <Entry Text="{Binding Nombre}" Placeholder="Nombre" Background="Wheat"/>
+        <Entry Text="{Binding Stock}" Placeholder="Stock" Keyboard="Numeric" Background="Wheat"/>
+        <Entry Text="{Binding Unidad}" Placeholder="Unidad" Background="Wheat"/>
+        <Entry Text="{Binding StockMinimo}" Placeholder="Stock Mínimo" Keyboard="Numeric" Background="Wheat"/>
         <Button Text="Confirmar Cambios" Command="{Binding ConfirmarCommand}" />
         <Button Text="Eliminar" Command="{Binding EliminarCommand}" BackgroundColor="Red" TextColor="White"/>
     </VerticalStackLayout>

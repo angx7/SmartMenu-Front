@@ -3,7 +3,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
             x:Class="SmartMenu.Views.CocinaPage"  
             Title="CocinaPage"  
-            Background="Red">
+            Background="#78C6F5">
     <ScrollView>
         <Grid Padding="30" RowSpacing="25">
             <Grid.RowDefinitions>
@@ -26,7 +26,7 @@
 
             <Button Text="Consultar Inventario"  
                    Clicked="Button_Clicked"
-                   BackgroundColor="#FFE066"  
+                   BackgroundColor="Wheat"  
                    TextColor="Black"  
                    CornerRadius="10"  
                    Padding="15"  
@@ -34,7 +34,7 @@
 
             <Button Text="Ver Pedidos"  
                    Clicked="Button_Clicked_1"
-                   BackgroundColor="#FFE066"  
+                   BackgroundColor="Wheat"  
                    TextColor="Black"  
                    CornerRadius="10"  
                    Padding="15"  
@@ -42,7 +42,7 @@
 
             <Button Text="Agregar insumo"
                     Clicked="OnAgregarInsumoClicked"
-                    BackgroundColor="#FFE066"
+                    BackgroundColor="Wheat"
                     TextColor="Black"  
                     CornerRadius="10"  
                     Padding="15"  

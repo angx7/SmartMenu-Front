@@ -4,7 +4,7 @@
              xmlns:viewModels="clr-namespace:SmartMenu.ViewModels"
              x:Class="SmartMenu.Views.PedidosPage"
              Title="Pedidos"
-             BackgroundColor="Red">
+             BackgroundColor="#78C6F5">
     <ContentPage.BindingContext>
         <viewModels:PedidosViewModel />
     </ContentPage.BindingContext>
@@ -19,7 +19,7 @@
                             SelectionChanged="PedidosCollection_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="#FFE066" CornerRadius="10" Padding="15" Margin="0,10,0,0">
+                        <Frame BackgroundColor="Wheat" CornerRadius="10" Padding="15" Margin="0,10,0,0">
                             <StackLayout>
                                 <Label Text="{Binding pedido_id, StringFormat='Pedido #{0}'}" FontAttributes="Bold" />
                                 <Label Text="{Binding fecha, StringFormat='Fecha: {0}'}" />
