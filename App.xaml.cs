@@ -35,7 +35,7 @@ public partial class App : Application
                     if (rol.Equals("administrador"))
                     {
                         /*pplication.Current.MainPage = new NavigationPage(new AdminView());*/
-                    } else if (rol.Equals("cocinero"))
+                    } else if (rol.Equals("mesero"))
                     {
                         Application.Current.MainPage = new NavigationPage(new MeseroPage());
                     }
