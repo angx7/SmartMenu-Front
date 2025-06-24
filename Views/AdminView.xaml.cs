@@ -31,4 +31,9 @@ public partial class AdminView : ContentPage
         Preferences.Clear();
         Application.Current.MainPage = new NavigationPage(new LoginPage());
     }
+
+    private async void OnReportesClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ReportesPage());
+    }
 }

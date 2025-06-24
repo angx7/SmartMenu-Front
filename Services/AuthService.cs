@@ -264,6 +264,73 @@ namespace SmartMenu.Services
             }
         }
 
+        public async Task<List<ReporteVentaDiaria>> ObtenerVentasDiariasAsync(int usuarioId)
+        {
+            var token = Preferences.Get("token", null);
+            if (string.IsNullOrWhiteSpace(token)) return null;
+
+            var body = new { usuario_id = usuarioId };
+            var json = JsonConvert.SerializeObject(body);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{BaseUrl}/api/reportes/ventas-diarias");
+            request.Content = content;
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.SendAsync(request);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception(responseContent);
+
+            return JsonConvert.DeserializeObject<List<ReporteVentaDiaria>>(responseContent);
+        }
+
+        public async Task<List<ReportePlatilloMasVendido>> ObtenerPlatillosMasVendidosAsync(int usuarioId)
+        {
+            var token = Preferences.Get("token", null);
+            if (string.IsNullOrWhiteSpace(token)) return null;
+
+            var body = new { usuario_id = usuarioId };
+            var json = JsonConvert.SerializeObject(body);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{BaseUrl}/api/reportes/platillos-mas-vendidos");
+            request.Content = content;
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.SendAsync(request);
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception(responseContent);
+
+            return JsonConvert.DeserializeObject<List<ReportePlatilloMasVendido>>(responseContent);
+        }
+
+        public async Task<List<ReporteInsumoFaltante>> ObtenerInsumosFaltantesAsync(int usuarioId)
+        {
+            var token = Preferences.Get("token", null);
+            if (string.IsNullOrWhiteSpace(token)) return null;
+
+            var body = new { usuario_id = usuarioId };
+            var json = JsonConvert.SerializeObject(body);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{BaseUrl}/api/reportes/insumos-faltantes");
+            request.Content = content;
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.SendAsync(request);
+            var responseContent = await response.Content.ReadAsStringAsync();
+            System.Diagnostics.Debug.WriteLine("[DEBUG] Respuesta insumos faltantes: " + responseContent);
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception(responseContent);
+
+            return JsonConvert.DeserializeObject<List<ReporteInsumoFaltante>>(responseContent);
+        }
+
         public async Task<string> ObtenerRolAsync(string token)
         {
             System.Diagnostics.Debug.WriteLine("Llamando a /rol con token: " + token);
@@ -298,5 +365,8 @@ namespace SmartMenu.Services
                 return null;
             }
         }
+
+
+
     }
 }

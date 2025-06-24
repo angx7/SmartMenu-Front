@@ -64,6 +64,13 @@
                         Opacity=".9"
                         Clicked="OnAgregarProveedorClicked"/>
 
+                        <Button Text="Reportes"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        CornerRadius="20"
+                        Opacity=".9"
+                        Clicked="OnReportesClicked"/>
+
                         <Button Text="Cerrar sesión" Clicked="OnLogoutClicked" />
                     </VerticalStackLayout>
 

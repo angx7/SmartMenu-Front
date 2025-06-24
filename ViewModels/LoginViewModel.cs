@@ -55,6 +55,31 @@ namespace SmartMenu.ViewModels
                 var token = Preferences.Get("token", null);
                 if (token != null)
                 {
+                    // Decodifica el usuario_id y guárdalo en Preferences
+                    try
+                    {
+                        var usuarioId = JwtHelper.GetUsuarioId(token);
+                        if (usuarioId.HasValue)
+                        {
+                            Preferences.Set("usuario_id", usuarioId.Value);
+                            System.Diagnostics.Debug.WriteLine($"[DEBUG] usuario_id guardado: {usuarioId.Value}");
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine("[ERROR] usuario_id no encontrado en el token");
+                        }
+
+                        // (Opcional) Muestra el payload para depuración
+                        var payload = JwtHelper.DecodePayload(token);
+                        foreach (var kv in payload)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"[JWT] {kv.Key} = {kv.Value}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Error decodificando usuario_id: " + ex.Message);
+                    }
                     var rol = await _authService.ObtenerRolAsync(token);
                     if (!string.IsNullOrEmpty(rol))
                     {
@@ -63,7 +88,8 @@ namespace SmartMenu.ViewModels
                         {
                             Application.Current.MainPage = new NavigationPage(new AdminView());
                         }
-                        else { 
+                        else
+                        {
                             Application.Current.MainPage = new NavigationPage(new AppShell());
                         }
                     }
