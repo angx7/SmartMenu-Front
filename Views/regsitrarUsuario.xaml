@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.regsitrarUsuario"
+             Title="regsitrarUsuario">
+    <Grid>
+        <ScrollView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ContentView Grid.Column="1">
+                    <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
+                        <!--<Image Source="tienditalogo.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>-->
+                        <Label Text="Adminstrador" TextColor="Azure" FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+                        <!--Formulario de login-->
+
+                        <Border BackgroundColor="White" Padding="20">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="15">
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="Nombre del proovedor"
+                                   TextColor="#1976D2"
+                                   FontAttributes="Bold"/>
+                                    <Entry Placeholder="Ingresar nombre del proveedor"
+                                           MaxLength="100"
+                                           TextColor="Black"
+                                           BackgroundColor="Transparent"
+                                           FontSize="16"
+                                           x:Name="ProovedorEntry"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="Contacto del proovedor"
+                                   TextColor="#1976D2"
+                                   FontAttributes="Bold"/>
+                                    <Entry Placeholder="Ingresar contacto con proveedor"
+                                           MaxLength="100"
+                                           TextColor="Black"
+                                           BackgroundColor="Transparent"
+                                           FontSize="16"
+                                           x:Name="ContactEntry"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="Telefono"
+                                           TextColor="#1976D2"
+                                           FontAttributes="Bold"/>
+                                    <Entry x:Name="TelefonoEntry"
+                                           Placeholder="Ingresa el teléfono"
+                                           MaxLength="10"
+                                           Keyboard="Telephone"
+                                           FontSize="16"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="Email"
+                                           TextColor="#1976D2"
+                                           FontAttributes="Bold"/>
+                                    <Entry x:Name="CorreoEntry"
+                                           Placeholder="Ingresa el correo"
+                                           MaxLength="100"
+                                           Keyboard="Email"
+                                           FontSize="16"/>
+                                </VerticalStackLayout>
+                                <Button Text="Agregar proveedor"
+                                BackgroundColor="#D72638"
+                                TextColor="Azure"
+                                CornerRadius="10"
+                                HeightRequest="50"
+                                FontAttributes="Bold"
+                                Margin="0,20,0,0"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+
+                </ContentView>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>
