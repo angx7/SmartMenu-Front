@@ -13,7 +13,7 @@
                 </Grid.ColumnDefinitions>
                 <ContentView Grid.Column="1">
                     <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
-                        <!--<Image Source="tienditalogo.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>-->
+                        <Image Source="mesero.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>
                         <Label Text="Adminstrador" TextColor="Azure" FontSize="24"
                        FontAttributes="Bold"
                        HorizontalOptions="Center"/>
@@ -53,6 +53,7 @@
                                     <Entry x:Name="TelefonoEntry"
                                            Placeholder="Ingresa el teléfono"
                                            MaxLength="10"
+                                           TextColor="Black"
                                            Keyboard="Telephone"
                                            FontSize="16"/>
                                 </VerticalStackLayout>
@@ -63,6 +64,7 @@
                                     <Entry x:Name="CorreoEntry"
                                            Placeholder="Ingresa el correo"
                                            MaxLength="100"
+                                           TextColor="Black"
                                            Keyboard="Email"
                                            FontSize="16"/>
                                 </VerticalStackLayout>

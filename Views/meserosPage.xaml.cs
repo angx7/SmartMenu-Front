@@ -9,7 +9,7 @@ public partial class meserosPage : ContentPage
     private const string apiUrl = "https://da63-2a09-bac1-50c0-60-00-9f-37.ngrok-free.app/api/usuarios/rol/2";
 
     // Token fijo (solo para pruebas)
-    private const string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXN1YXJpbyI6ImFkbWluIiwicm9sX2lkIjoxLCJpYXQiOjE3NTA3MzEzNTIsImV4cCI6MTc1MDc2MDE1Mn0.-7jtzX-iCQeXbmjayXmYl1ZSaKMpk57ir39rGgO3Smo";
+    private const string token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXN1YXJpbyI6ImFkbWluIiwicm9sX2lkIjoxLCJpYXQiOjE3NTA3NDMwOTUsImV4cCI6MTc1MDc3MTg5NX0.9CUl5W6eHn7HY0a2enu_d9nP9GwElG-W1DBlOFL-0GQ";
 
     public meserosPage()
     {
