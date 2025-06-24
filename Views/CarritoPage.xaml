@@ -1,0 +1,56 @@
+
+
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.CarritoPage"
+             Title="Resumen del Pedido"
+             BackgroundColor="#FFE066">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <Label Text="Resumen del pedido"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Center" />
+
+            <CollectionView x:Name="ListaCarrito">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray" CornerRadius="15" Padding="10">
+                            <HorizontalStackLayout Spacing="15">
+                                <Image Source="{Binding Imagen}"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       Aspect="AspectFill" />
+
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Nombre}" FontSize="18" TextColor="Black" />
+                                    <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="14" TextColor="DarkGreen" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label x:Name="TotalLabel"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="End" />
+
+            <Button Text="Confirmar Pedido"
+                    BackgroundColor="#DC3545"
+                    TextColor="White"
+                    CornerRadius="20"
+                    HeightRequest="55"
+                    WidthRequest="250"
+                    HorizontalOptions="Center"
+                    Clicked="ConfirmarPedido_Clicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
