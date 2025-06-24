@@ -54,4 +54,22 @@ public partial class MeseroPage : ContentPage
 
             var data = JsonConvert.DeserializeObject<PedidoMesaResponse>(responseText);
 
-            await 
+            await Navigation.PushAsync(new ComandaPage(mesaId, data.pedido_id, data.nuevo, data.detalles, data.total));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+
+    private async void Mesa1_Clicked(object sender, EventArgs e) => await IrAMesa(1);
+    private async void Mesa2_Clicked(object sender, EventArgs e) => await IrAMesa(2);
+    private async void Mesa3_Clicked(object sender, EventArgs e) => await IrAMesa(3);
+
+    private async void OnLogoutClicked(object sender, EventArgs e)
+    {
+        Preferences.Clear();
+        await Task.Delay(100);
+        Application.Current.MainPage = new NavigationPage(new LoginPage());
+    }
+}
