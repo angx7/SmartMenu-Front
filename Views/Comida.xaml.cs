@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using SmartMenu.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace SmartMenu.Views
         private List<Platillo> platillos = new();
         private int mesaId;
 
-        public Comida(int mesaId)
+        public Comida(int mesaId, int pedidoId, bool esNuevo, List<DetallePedido> detalles, double total)
         {
             InitializeComponent();
             this.mesaId = mesaId;
