@@ -39,7 +39,7 @@ public partial class meserosPage : ContentPage
             }
 
             var json = await response.Content.ReadAsStringAsync();
-            var meseros = JsonConvert.DeserializeObject<List<Mesero>>(json);
+            var meseros = JsonConvert.DeserializeObject<List<Usuario>>(json);
 
             if (meseros is null || meseros.Count == 0)
             {
@@ -51,7 +51,7 @@ public partial class meserosPage : ContentPage
             {
                 var boton = new Button
                 {
-                    Text = $"{mesero.Nombre} - {mesero.Telefono}",
+                    Text = $"{mesero.Id} - {mesero.Nombre}",
                     BackgroundColor = Colors.Red,
                     TextColor = Colors.White,
                     CornerRadius = 20
@@ -59,10 +59,7 @@ public partial class meserosPage : ContentPage
 
                 boton.Clicked += (s, e) =>
                 {
-                    if (!string.IsNullOrEmpty(mesero.Telefono))
-                        PhoneDialer.Open(mesero.Telefono);
-                    else
-                        DisplayAlert("Sin teléfono", "Este mesero no tiene número registrado.", "OK");
+                    DisplayAlert("Sin teléfono", "Este mesero no tiene número registrado.", "OK");
                 };
 
                 meserosLayout.Children.Add(boton);
