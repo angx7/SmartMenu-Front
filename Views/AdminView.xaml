@@ -13,39 +13,51 @@
                 </Grid.ColumnDefinitions>
                 <ContentView Grid.Column="1">
                     <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
+
+                        <Image Source="senortrajeado.jpg"
+                               WidthRequest="120" HeightRequest="120"
+                               HorizontalOptions="Center"
+                               Aspect="AspectFit" >
+                            <Image.Clip>
+                                <EllipseGeometry
+                                    Center="60,60"
+                                    RadiusX="60"
+                                    RadiusY="60"/>
+                            </Image.Clip>
+                        </Image>
                         <!--<Image Source="tienditalogo.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>-->
                         <Label Text="Adminstrador" TextColor="Azure" FontSize="24"
                            FontAttributes="Bold"
                            HorizontalOptions="Center"/>
                         <!--Formulario de login-->
 
-                        <Border BackgroundColor="White" Padding="20">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10"/>
-                            </Border.StrokeShape>
-                            <VerticalStackLayout Spacing="15">
-                                <VerticalStackLayout Spacing="5">
-                                    <Label Text="Usuario"
-                                       TextColor="#1976D2"
-                                       FontAttributes="Bold"/>
-                                    <Entry Placeholder="juanito123"/>
-                                </VerticalStackLayout>
-                                <VerticalStackLayout Spacing="5">
-                                    <Label Text="Contraseña"
-                                       TextColor="#1976D2"
-                                       FontAttributes="Bold"/>
-                                    <Entry Placeholder="Ingresar contraseña"
-                                       IsPassword="True"></Entry>
-                                </VerticalStackLayout>
-                                <Button Text="Agregar Usuarios"
-                                    BackgroundColor="#D72638"
-                                    TextColor="Azure"
-                                    CornerRadius="10"
-                                    HeightRequest="50"
-                                    FontAttributes="Bold"
-                                    Margin="0,20,0,0"/>
-                            </VerticalStackLayout>
-                        </Border>
+
+
+                        <!-- Botones -->
+                        <Button Text="Consultar Usuario"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        CornerRadius="20"
+                        />
+
+                        <Button Text="Agregar Usuario"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        CornerRadius="20"
+                        Clicked="OnAgregarUsuarioClicked"/>
+
+                        <Button Text="Consultar proveedor"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        CornerRadius="20"/>
+
+                        <Button Text="Agregar proveedor"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        CornerRadius="20"
+                        Clicked="OnAgregarProveedorClicked"/>
+
+                        <Button Text="Cerrar sesión" Clicked="OnLogoutClicked" />
                     </VerticalStackLayout>
 
                 </ContentView>

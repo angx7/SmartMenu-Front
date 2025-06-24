@@ -6,4 +6,19 @@ public partial class AdminView : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void OnAgregarUsuarioClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new regsitrarUsuario());
+    }
+
+    private async void OnAgregarProveedorClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new registarProveedores());
+    }
+    private void OnLogoutClicked(object sender, EventArgs e)
+    {
+        Preferences.Clear();
+        Application.Current.MainPage = new NavigationPage(new LoginPage());
+    }
 }
