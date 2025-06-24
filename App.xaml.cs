@@ -34,11 +34,11 @@ public partial class App : Application
                     System.Diagnostics.Debug.WriteLine("Tu rol es " + rol);
                     if (rol.Equals("administrador"))
                     {
-                        Application.Current.MainPage = new AdminView();
+                        Application.Current.MainPage = new NavigationPage(new AdminView());
                     }
                     else
                     {
-                    Application.Current.MainPage = new AppShell();
+                    Application.Current.MainPage = new NavigationPage(new AppShell());
                     }
                     return;
                 }
