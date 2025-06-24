@@ -1,9 +1,18 @@
-namespace SmartMenu.Views;
+using Microsoft.Maui.Controls;
+using System.Collections.Generic;
 
-public partial class Comida : ContentPage
+namespace SmartMenu.Views
 {
-	public Comida()
-	{
-		InitializeComponent();
-	}
+    public partial class Comida : ContentPage
+    {
+        int mesaId;
+
+        public Comida(int mesaId)
+        {
+            InitializeComponent();
+            this.mesaId = mesaId;
+            Title = $"Pedido - Mesa {mesaId}";
+        }
+    }
+
 }

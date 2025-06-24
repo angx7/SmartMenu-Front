@@ -12,7 +12,8 @@
                 Text="Comida"
                 FontSize="32"
                 FontAttributes="Bold"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" 
+                TextColor="Black"/>
 
             <!-- Hamburguesa -->
             <VerticalStackLayout HorizontalOptions="Center" Spacing="5">
@@ -22,7 +23,7 @@
                            HeightRequest="150"
                            Aspect="AspectFill" />
                 </Border>
-                <Label Text="Hamburguesa" FontSize="18" HorizontalOptions="Center"/>
+                <Label Text="Hamburguesa" FontSize="18" HorizontalOptions="Center" TextColor="Black"/>
             </VerticalStackLayout>
 
             <!-- Ensalada -->
@@ -33,7 +34,7 @@
                            HeightRequest="150"
                            Aspect="AspectFill" />
                 </Border>
-                <Label Text="Ensalada" FontSize="18" HorizontalOptions="Center"/>
+                <Label Text="Ensalada" FontSize="18" HorizontalOptions="Center" TextColor="Black"/>
             </VerticalStackLayout>
 
             <!-- Pizza Pepperoni -->
@@ -44,7 +45,7 @@
                            HeightRequest="150"
                            Aspect="AspectFill" />
                 </Border>
-                <Label Text="Pizza Pepperoni" FontSize="18" HorizontalOptions="Center"/>
+                <Label Text="Pizza Pepperoni" FontSize="18" HorizontalOptions="Center" TextColor="Black"/>
             </VerticalStackLayout>
 
             <!-- Botón Agregar -->

@@ -27,10 +27,18 @@
                     <Label Text="Iniciar Sesión" FontSize="20" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"/>
 
                     <Label Text="Correo Electrónico:" FontSize="14" TextColor="Black"/>
-                    <Entry Placeholder="ejemplo@correo.com" Text="{Binding Usuario}" Keyboard="Email" BackgroundColor="#F4F4F4" />
+                    <Entry Placeholder="ejemplo@correo.com"
+                           Text="{Binding Usuario}"
+                           Keyboard="Email"
+                           BackgroundColor="#F4F4F4"
+                           TextColor="#000000" />
 
                     <Label Text="Contraseña:" FontSize="14" TextColor="Black"/>
-                    <Entry Placeholder="••••••" Text="{Binding Contrasena}" IsPassword="True" BackgroundColor="#F4F4F4"/>
+                    <Entry Placeholder="••••••"
+                           Text="{Binding Contrasena}"
+                           IsPassword="True"
+                           BackgroundColor="#F4F4F4"
+                           TextColor="#000000" />
 
                     <Label Text="¿Olvidaste tu contraseña?" FontSize="12" TextColor="Blue" HorizontalOptions="Start"/>
                     <Label Text="¿No tienes cuenta? " FontSize="12" TextColor="Black">
@@ -59,4 +67,3 @@
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
-
