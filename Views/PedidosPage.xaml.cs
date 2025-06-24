@@ -10,12 +10,11 @@ public partial class PedidosPage : ContentPage
         InitializeComponent();
     }
 
-    private async void PedidosCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void Pedido_Tapped(object sender, TappedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is ComandaPedido pedido)
+        if (e.Parameter is ComandaPedido pedido)
         {
             await Navigation.PushAsync(new DetallePedidoPage(pedido));
-            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }
