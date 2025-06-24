@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.ComandaPage"
+             Title="Comanda"
+             BackgroundColor="#FFE066">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="Comanda de la mesa" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <!-- Lista de platillos -->
+        <CollectionView x:Name="PlatillosList" HeightRequest="300">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="White" CornerRadius="10" Padding="10" Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding nombre}" FontSize="18" TextColor="Black" />
+                            <Label Text="{Binding cantidad, StringFormat='Cantidad: {0}'}" FontSize="16" TextColor="Gray" />
+                            <Label Text="{Binding subtotal, StringFormat='Subtotal: ${0}'}" FontSize="16" TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Total -->
+        <Label x:Name="TotalLabel" Text="Total: $0.00" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <!-- Botones -->
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            <Button Text="Agregar productos" BackgroundColor="#4CAF50" TextColor="White" Clicked="OnAgregarClicked" />
+            <Button Text="Pagar cuenta" BackgroundColor="#DC3545" TextColor="White" Clicked="OnPagarClicked" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

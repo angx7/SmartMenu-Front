@@ -83,6 +83,9 @@
 	  <MauiXaml Update="Views\CarritoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Comanda.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Comida.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
