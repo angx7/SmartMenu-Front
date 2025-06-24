@@ -14,7 +14,6 @@ public partial class App : Application
         Env.Load(".env");
         InitializeComponent();
         _authService = new AuthService();
-        Preferences.Clear(); // Limpiar preferencias al iniciar la app
         MainPage = new NavigationPage(new LoginPage()); // Página temporal mientras se inicializa
         InicializarAsync();
     }
