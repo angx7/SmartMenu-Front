@@ -11,6 +11,5 @@
         <Entry Text="{Binding Unidad}" Placeholder="Unidad" Background="Wheat"/>
         <Entry Text="{Binding StockMinimo}" Placeholder="Stock Mínimo" Keyboard="Numeric" Background="Wheat"/>
         <Button Text="Confirmar Cambios" Command="{Binding ConfirmarCommand}" />
-        <Button Text="Eliminar" Command="{Binding EliminarCommand}" BackgroundColor="Red" TextColor="White"/>
     </VerticalStackLayout>
 </ContentPage>
