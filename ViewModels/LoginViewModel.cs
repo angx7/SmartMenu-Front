@@ -53,36 +53,25 @@ namespace SmartMenu.ViewModels
             if (isAuthenticated)
             {
                 var token = Preferences.Get("token", null);
-                System.Diagnostics.Debug.WriteLine("Token encontrado: " + token);
                 if (token != null)
                 {
                     var rol = await _authService.ObtenerRolAsync(token);
-                    System.Diagnostics.Debug.WriteLine("Respuesta de ObtenerRolAsync: " + (rol ?? "null"));
                     if (!string.IsNullOrEmpty(rol))
                     {
                         System.Diagnostics.Debug.WriteLine("Tu rol es " + rol);
                         if (rol.Equals("administrador"))
                         {
-                            /*pplication.Current.MainPage = new NavigationPage(new AdminView());*/
-                        }
-                        else if (rol.Equals("mesero"))
-                        {
-                            Application.Current.MainPage = new NavigationPage(new MeseroPage());
+                            //Application.Current.MainPage = new NavigationPage(new AdminView());
                         }
                         else
                         {
                             Application.Current.MainPage = new NavigationPage(new AppShell());
                         }
-                        return;
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("No se pudo obtener el rol.");
                     }
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("Token es null.");
+                    await _page.DisplayAlert("Error", "No se pudo obtener el token", "OK");
                 }
             }
             else
