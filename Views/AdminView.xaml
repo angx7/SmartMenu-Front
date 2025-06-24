@@ -26,7 +26,7 @@
                             </Image.Clip>
                         </Image>
                         <!--<Image Source="tienditalogo.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>-->
-                        <Label Text="Adminstrador" TextColor="Azure" FontSize="24"
+                        <Label Text="Adminstrador" TextColor="Black" FontSize="24"
                            FontAttributes="Bold"
                            HorizontalOptions="Center"/>
                         <!--Formulario de login-->

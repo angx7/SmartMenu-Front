@@ -38,7 +38,7 @@ public partial class App : Application
                     }
                     else
                     {
-                    Application.Current.MainPage = new NavigationPage(new AppShell());
+                        Application.Current.MainPage = new NavigationPage(new AppShell());
                     }
                     return;
                 }

@@ -2,64 +2,73 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.registarProveedores"
-             Title="registarProveedores">
-    <Grid>
-        <ScrollView>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ContentView Grid.Column="1">
-                    <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
-                        <!--<Image Source="tienditalogo.png" HeightRequest="120" Aspect="AspectFill" HorizontalOptions="Center"/>-->
-                        <Label Text="Adminstrador" TextColor="Azure" FontSize="24"
-                       FontAttributes="Bold"
-                       HorizontalOptions="Center"/>
-                        <!--Formulario de login-->
+             Title="Registrar Proveedor">
 
-                        <Border BackgroundColor="White" Padding="20">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10"/>
-                            </Border.StrokeShape>
-                            <VerticalStackLayout Spacing="15">
-                                <VerticalStackLayout Spacing="5">
-                                    <Label Text="Usuario"
-                                   TextColor="#1976D2"
-                                   FontAttributes="Bold"/>
-                                    <Entry Placeholder="Ingresar usuario"
-                                           MaxLength="50"
-                                           TextColor="Black"
-                                           BackgroundColor="Transparent"
-                                           FontSize="16"
-                                           x:Name="UsuarioEntry"/>
-                                </VerticalStackLayout>
-                                <VerticalStackLayout Spacing="5">
-                                    <Label Text="Contraseña"
-                                   TextColor="#1976D2"
-                                   FontAttributes="Bold"/>
-                                    <Entry Placeholder="Ingresar contraseña"
-                                           MaxLength="255"
-                                           IsPassword="True"
-                                           TextColor="Black"
-                                           BackgroundColor="Transparent"
-                                           FontSize="16"
-                                           x:Name="ContrasenaEntry"/>
-                                </VerticalStackLayout>
-                                <Button Text="Agregar Usuarios"
-                                BackgroundColor="#D72638"
-                                TextColor="Azure"
-                                CornerRadius="10"
-                                HeightRequest="50"
-                                FontAttributes="Bold"
-                                Margin="0,20,0,0"/>
+    <ScrollView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ContentView Grid.Column="1" Padding="0,40,0,40">
+                <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Registrar Proveedor" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Border BackgroundColor="White" Padding="20">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="15">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Nombre" TextColor="#1976D2" FontAttributes="Bold"/>
+                                <Entry Placeholder="Ingresar nombre"
+                                       MaxLength="50"
+                                       TextColor="Black"
+                                       BackgroundColor="Transparent"
+                                       FontSize="16"
+                                       Text="{Binding Nombre}" />
                             </VerticalStackLayout>
-                        </Border>
-                    </VerticalStackLayout>
-
-                </ContentView>
-            </Grid>
-        </ScrollView>
-    </Grid>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Contacto" TextColor="#1976D2" FontAttributes="Bold"/>
+                                <Entry Placeholder="Ingresar contacto"
+                                       MaxLength="50"
+                                       TextColor="Black"
+                                       BackgroundColor="Transparent"
+                                       FontSize="16"
+                                       Text="{Binding Contacto}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Teléfono" TextColor="#1976D2" FontAttributes="Bold"/>
+                                <Entry Placeholder="Ingresar teléfono"
+                                       MaxLength="20"
+                                       Keyboard="Telephone"
+                                       TextColor="Black"
+                                       BackgroundColor="Transparent"
+                                       FontSize="16"
+                                       Text="{Binding Telefono}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Correo" TextColor="#1976D2" FontAttributes="Bold"/>
+                                <Entry Placeholder="Ingresar correo"
+                                       MaxLength="100"
+                                       Keyboard="Email"
+                                       TextColor="Black"
+                                       BackgroundColor="Transparent"
+                                       FontSize="16"
+                                       Text="{Binding Correo}" />
+                            </VerticalStackLayout>
+                            <Button Text="Registrar"
+                                    Command="{Binding RegistrarCommand}"
+                                    BackgroundColor="#D72638"
+                                    TextColor="Azure"
+                                    CornerRadius="10"
+                                    HeightRequest="50"
+                                    FontAttributes="Bold"
+                                    Margin="0,20,0,0"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+            </ContentView>
+        </Grid>
+    </ScrollView>
 </ContentPage>

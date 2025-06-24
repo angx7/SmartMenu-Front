@@ -9,7 +9,7 @@ public partial class AdminView : ContentPage
 
     private async void OnAgregarUsuarioClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new regsitrarUsuario());
+        await Navigation.PushAsync(new AddUserPage());
     }
 
     private async void OnAgregarProveedorClicked(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿using SmartMenu.Models;
 using SmartMenu.Services;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -13,7 +14,6 @@ namespace SmartMenu.ViewModels
         public string Nombre { get; set; }
         public string Usuario { get; set; }
         public string Contrasena { get; set; }
-        public string Rol { get; set; }
 
         public ICommand RegistrarCommand { get; }
 
@@ -28,15 +28,12 @@ namespace SmartMenu.ViewModels
 
         private async Task Registrar()
         {
-            int rolId = 0;
-            int.TryParse(Rol, out rolId); // evita que truene si escriben letras
-
             var nuevo = new UserRequest
             {
                 Nombre = Nombre,
                 Usuario = Usuario,
                 Contraseña = Contrasena,
-                Rol_Id = rolId
+                Rol_Id = Rol
             };
 
             var success = await _authService.RegistrarUsuario(nuevo);
@@ -44,8 +41,58 @@ namespace SmartMenu.ViewModels
             {
                 await _page.DisplayAlert("Éxito", "Usuario registrado", "OK");
                 await _page.Navigation.PopAsync();
-            } else
+            }
+            else
+            {
                 await _page.DisplayAlert("Error", "No se pudo registrar", "OK");
+            }
+        }
+
+        public class RolItem
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+        }
+
+        public ObservableCollection<RolItem> Roles { get; } = new()
+        {
+            new RolItem { Id = 1, Nombre = "Administrador" },
+            new RolItem { Id = 2, Nombre = "Mesero" },
+            new RolItem { Id = 3, Nombre = "Cocinero" }
+        };
+
+        private RolItem _rolSeleccionado;
+        public RolItem RolSeleccionado
+        {
+            get => _rolSeleccionado;
+            set
+            {
+                if (_rolSeleccionado != value)
+                {
+                    _rolSeleccionado = value;
+                    Rol = value?.Id ?? 0; // Guarda el int en la propiedad Rol
+                    OnPropertyChanged(nameof(RolSeleccionado));
+                }
+            }
+        }
+
+        private int _rol;
+        public int Rol
+        {
+            get => _rol;
+            set
+            {
+                if (_rol != value)
+                {
+                    _rol = value;
+                    OnPropertyChanged(nameof(Rol));
+                }
+            }
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

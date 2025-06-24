@@ -3,27 +3,82 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:SmartMenu.ViewModels"
              x:Class="SmartMenu.Views.AddUserPage"
-             Title="Nuevo Usuario"
-             BackgroundColor="Black">
+             Title="Registrar Usuario">
 
     <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="15">
-            <Label Text="Registrar nuevo usuario" 
-                   FontSize="22" 
-                   FontAttributes="Bold" 
-                   HorizontalOptions="Center" />
-
-            <Entry Placeholder="Nombre completo" Text="{Binding Nombre}" />
-            <Entry Placeholder="Usuario" Text="{Binding Usuario}" />
-            <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding Contrasena}" />
-            <Entry Placeholder="Rol ID (ej: 1 o 2)" Keyboard="Numeric" Text="{Binding Rol}" />
-
-            <Button Text="Registrar"
-                    Command="{Binding RegistrarCommand}"
-                    BackgroundColor="#007AFF"
-                    TextColor="White"
-                    CornerRadius="10"
-                    Padding="10" />
-        </VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ContentView Grid.Column="1" Padding="0,40,0,40">
+                <VerticalStackLayout Spacing="25" Padding="30, 0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Image Source="tienditalogo.png" HeightRequest="120" HorizontalOptions="Center"/>
+                    <Label Text="Administrador" TextColor="Black" FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"/>
+                    <Border BackgroundColor="White" Padding="20">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="15">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Nombre completo"
+                                       TextColor="#1976D2"
+                                       FontAttributes="Bold"/>
+                                <Entry Placeholder="Ingresar nombre completo"
+                                       MaxLength="50"
+                                       TextColor="Black"
+                                       BackgroundColor="Transparent"
+                                       FontSize="16"
+                                       Text="{Binding Nombre}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Usuario"
+                                       TextColor="#1976D2"
+                                       FontAttributes="Bold"/>
+                                <Entry Placeholder="Ingresar usuario"
+                                       MaxLength="50"
+                                       TextColor="Black"
+                                       BackgroundColor="Transparent"
+                                       FontSize="16"
+                                       Text="{Binding Usuario}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Contraseña"
+                                       TextColor="#1976D2"
+                                       FontAttributes="Bold"/>
+                                <Entry Placeholder="Ingresar contraseña"
+                                       MaxLength="255"
+                                       IsPassword="True"
+                                       TextColor="Black"
+                                       BackgroundColor="Transparent"
+                                       FontSize="16"
+                                       Text="{Binding Contrasena}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Rol"
+                                   TextColor="#1976D2"
+                                   FontAttributes="Bold"/>
+                                <Picker
+                                Title="Selecciona un rol"
+                                ItemsSource="{Binding Roles}" 
+                                ItemDisplayBinding="{Binding Nombre}"
+                                SelectedItem="{Binding RolSeleccionado, Mode=TwoWay}" />
+                            </VerticalStackLayout>
+                            <Button Text="Registrar"
+                                    Command="{Binding RegistrarCommand}"
+                                    BackgroundColor="#D72638"
+                                    TextColor="Azure"
+                                    CornerRadius="10"
+                                    HeightRequest="50"
+                                    FontAttributes="Bold"
+                                    Margin="0,20,0,0"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+            </ContentView>
+        </Grid>
     </ScrollView>
 </ContentPage>
