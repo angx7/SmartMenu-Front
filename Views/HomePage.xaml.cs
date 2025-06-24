@@ -25,9 +25,11 @@ public partial class HomePage : ContentPage
         await Navigation.PushAsync(new Comida(3));
     }
 
-    private void OnLogoutClicked(object sender, EventArgs e)
+   private async void OnLogoutClicked(object sender, EventArgs e)
     {
         Preferences.Clear();
+        await Task.Delay(100); // Da tiempo a que se cierren tareas pendientes
         Application.Current.MainPage = new NavigationPage(new LoginPage());
     }
+
 }
