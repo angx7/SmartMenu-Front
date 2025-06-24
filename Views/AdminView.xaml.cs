@@ -19,7 +19,7 @@ public partial class AdminView : ContentPage
 
     private async void OnVerMeserosDisponibles(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new meserosPage());
+        await Navigation.PushAsync(new usuariosPage());
     }
 
     private async void OnVerProveedoresDisponibles(object sender, EventArgs e)

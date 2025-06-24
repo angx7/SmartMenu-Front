@@ -18,15 +18,15 @@ public partial class proveedoresPage : ContentPage
         {
             using var client = new HttpClient();
             var response = await client.GetStringAsync(apiUrl);
-            var datos = JsonConvert.DeserializeObject<List<Mesero>>(response);
+            var datos = JsonConvert.DeserializeObject<List<Usuario>>(response);
 
-            var proveedores = datos.Where(p => p.Rol?.ToLower() == "proveedor").ToList();
+            var proveedores = datos.Where(p => p.Rol_Id == 2).ToList();
 
             foreach (var proveedor in proveedores)
             {
                 var boton = new Button
                 {
-                    Text = $"{proveedor.Nombre} - {proveedor.Telefono}",
+                    Text = $"{proveedor.Nombre} - {proveedor.Rol_Id}",
                     BackgroundColor = Colors.Red,
                     TextColor = Colors.White,
                     CornerRadius = 20
@@ -34,8 +34,8 @@ public partial class proveedoresPage : ContentPage
 
                 boton.Clicked += (s, e) =>
                 {
-                    if (!string.IsNullOrEmpty(proveedor.Telefono))
-                        PhoneDialer.Open(proveedor.Telefono);
+                    if (proveedor.Rol_Id == null)
+                        PhoneDialer.Open(proveedor.Contraseña);
                 };
 
                 ProveedoresLayout.Children.Add(boton);

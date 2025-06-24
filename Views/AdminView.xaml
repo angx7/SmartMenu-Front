@@ -34,7 +34,7 @@
 
 
                         <!-- Botones -->
-                        <Button Text="Consultar meseros"
+                        <Button Text="Consultar usuarios"
                         BackgroundColor="#D32F2F"
                         TextColor="White"
                         CornerRadius="20"

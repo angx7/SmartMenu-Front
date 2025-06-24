@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.usuariosPage"
+             Title="Usuarios">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="Usuarios disponibles" FontSize="20" FontAttributes="Bold"/>
+            <!-- Picker para filtrar por rol -->
+            <Label Text="Filtrar por rol:" FontSize="16" />
+            <Picker x:Name="rolPicker" SelectedIndexChanged="OnRolPickerChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Todos</x:String>
+                        <x:String>Administrador</x:String>
+                        <x:String>Mesero</x:String>
+                        <x:String>Cocinero</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <!-- Aquí se mostrarán los usuarios -->
+            <VerticalStackLayout x:Name="usuariosLayout" Spacing="16"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

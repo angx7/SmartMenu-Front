@@ -87,7 +87,7 @@
 	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\meserosPage.xaml">
+	  <MauiXaml Update="Views\usuariosPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\proveedoresPage.xaml">
@@ -114,6 +114,12 @@
 	  <AndroidAsset Update="Platforms\Android\Assets\env">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </AndroidAsset>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\usuariosPage.xaml.cs">
+	    <DependentUpon>usuariosPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

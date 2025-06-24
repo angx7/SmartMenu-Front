@@ -85,6 +85,34 @@ namespace SmartMenu.Services
             }
         }
 
+        public async Task<List<Usuario>> ObtenerUsuariosAsync()
+        {
+            try
+            {
+                var token = Preferences.Get("token", null);
+                if (string.IsNullOrWhiteSpace(token)) return null;
+
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{BaseUrl}/api/usuarios");
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.SendAsync(request);
+                var json = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error al obtener usuarios: " + json);
+                    return null;
+                }
+
+                return JsonConvert.DeserializeObject<List<Usuario>>(json);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Excepción en ObtenerUsuariosAsync: " + ex.Message);
+                return null;
+            }
+        }
+
         public async Task<bool> RegistrarProveedor(ProveedorRequest proveedor)
         {
             try
