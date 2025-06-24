@@ -16,11 +16,7 @@
                     BackgroundColor="#4CAF50"
                     TextColor="White"
                     CornerRadius="15"/>
-            <Button Text="Eliminar proveedor"
-                    Command="{Binding EliminarCommand}"
-                    BackgroundColor="Red"
-                    TextColor="White"
-                    CornerRadius="15"/>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
