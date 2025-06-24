@@ -32,8 +32,40 @@ namespace SmartMenu.Views
 
         private async void OnAgregarClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Comida(_mesaId, _pedidoId, false, _platillos.ToList(), _total));
+            try
+            {
+                var token = Preferences.Get("token", null);
+
+                if (string.IsNullOrEmpty(token))
+                {
+                    await DisplayAlert("Error", "No hay token disponible. Inicia sesión primero.", "OK");
+                    return;
+                }
+
+                _httpClient.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.GetAsync($"{_baseUrl}/api/platillos");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    await DisplayAlert("Error",
+                        $"Código: {response.StatusCode}\nMensaje: {errorContent}", "OK");
+                    return;
+                }
+
+                var json = await response.Content.ReadAsStringAsync();
+                var platillos = JsonConvert.DeserializeObject<List<Platillo>>(json);
+
+                await Navigation.PushAsync(new Comida(_mesaId, _pedidoId, false, _platillos.ToList(), _total, platillos));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+            }
         }
+
 
         private async void OnPagarClicked(object sender, EventArgs e)
         {
@@ -42,8 +74,7 @@ namespace SmartMenu.Views
                 var response = await _httpClient.PutAsync($"{_baseUrl}/api/pedidos/{_pedidoId}/finalizar", null);
                 if (response.IsSuccessStatusCode)
                 {
-                    await DisplayAlert("Éxito", "Cuenta pagada correctamente.", "OK");
-                    await Navigation.PopToRootAsync();
+                    await Navigation.PushAsync(new TicketPage(_mesaId, _pedidoId, _platillos.ToList()));
                 }
                 else
                 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,10 @@ namespace SmartMenu.Models
 {
     public class Platillo
     {
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public decimal Precio { get; set; }
+        [JsonProperty("id")]
+        public int platillo_id { get; set; }
+        public string nombre { get; set; }
+        public double precio { get; set; }
+        public string descripcion { get; set; }
     }
 }

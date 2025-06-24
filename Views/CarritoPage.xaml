@@ -2,35 +2,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartMenu.Views.CarritoPage"
-             Title="Resumen del Pedido"
-             BackgroundColor="#FFE066">
+             Title="Carrito"
+             BackgroundColor="#FFF3CD">
 
     <ScrollView>
-        <VerticalStackLayout Padding="25" Spacing="20">
-
-            <Label Text="Resumen del pedido"
-                   FontSize="28"
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Label Text="Resumen del carrito"
+                   FontSize="24"
                    FontAttributes="Bold"
-                   TextColor="Black"
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center"
+                   TextColor="Black" />
 
-            <CollectionView x:Name="ListaCarrito">
+            <CollectionView x:Name="CarritoCollection" ItemsLayout="VerticalList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="White"
-                               BorderColor="LightGray"
-                               CornerRadius="15"
-                               Padding="15"
-                               Margin="0,0,0,10">
+                        <Frame BackgroundColor="White" CornerRadius="15" Padding="10" Margin="10">
                             <VerticalStackLayout>
-                                <Label Text="{Binding Nombre}"
-                                       FontSize="18"
-                                       FontAttributes="Bold"
-                                       TextColor="Black" />
+                                <Label Text="{Binding nombre}" FontSize="18" FontAttributes="Bold" />
+                                <Label Text="{Binding precio, StringFormat='Precio: ${0:F2}'}" FontSize="14" />
 
-                                <Label Text="{Binding Precio, StringFormat='${0:F2}'}"
+                                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                                    <Label Text="Cantidad:" FontSize="14" VerticalOptions="Center"/>
+                                    <Stepper Minimum="1"
+                                             Maximum="20"
+                                             Increment="1"
+                                             Value="{Binding cantidad, Mode=TwoWay}" />
+                                    <Label Text="{Binding cantidad}" FontSize="14" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+
+                                <Label Text="{Binding Subtotal, StringFormat='Subtotal: ${0:F2}'}"
                                        FontSize="14"
-                                       TextColor="DarkGreen" />
+                                       TextColor="DarkGreen"
+                                       HorizontalOptions="End" />
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
@@ -38,19 +41,18 @@
             </CollectionView>
 
             <Label x:Name="TotalLabel"
-                   FontSize="20"
+                   Text="Total: $0.00"
+                   FontSize="18"
                    FontAttributes="Bold"
                    TextColor="Black"
-                   HorizontalOptions="End" />
+                   HorizontalOptions="End"
+                   Margin="0,10" />
 
-            <Button Text="Confirmar Pedido"
-                    BackgroundColor="#DC3545"
+            <Button Text="Confirmar pedido"
+                    BackgroundColor="#28A745"
                     TextColor="White"
                     CornerRadius="20"
-                    HeightRequest="55"
-                    WidthRequest="250"
-                    HorizontalOptions="Center"
-                    Clicked="ConfirmarPedido_Clicked" />
+                    Clicked="OnConfirmarPedidoClicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

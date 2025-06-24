@@ -2,54 +2,30 @@ using Microsoft.Maui.Controls;
 using SmartMenu.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace SmartMenu.Views
 {
     public partial class Comida : ContentPage
     {
-        // Modelo del platillo actualizado
-        public class Platillo
-        {
-            public string Nombre { get; set; }
-            public string Descripcion { get; set; }
-            public decimal Precio { get; set; }
-        }
+        private readonly int _mesaId;
+        private readonly int _pedidoId;
+        private readonly ObservableCollection<DetallePedido> _platillosActuales;
+        private readonly double _total;
+        private readonly List<Platillo> _platillosDisponibles;
 
-        private List<Platillo> carrito = new();
-        private List<Platillo> platillos = new();
-        private int mesaId;
+        private readonly List<Platillo> carrito = new();
 
-        public Comida(int mesaId, int pedidoId, bool esNuevo, List<DetallePedido> detalles, double total)
+        public Comida(int mesaId, int pedidoId, bool nuevo, List<DetallePedido> detalles, double total, List<Platillo> platillos)
         {
             InitializeComponent();
-            this.mesaId = mesaId;
-            Title = $"Pedido - Mesa {mesaId}";
+            _mesaId = mesaId;
+            _pedidoId = pedidoId;
+            _platillosActuales = new ObservableCollection<DetallePedido>(detalles);
+            _total = total;
+            _platillosDisponibles = platillos;
 
-            // Lista de platillos con descripciones
-            platillos.Add(new Platillo
-            {
-                Nombre = "Hamburguesa",
-                Descripcion = "Clásica hamburguesa con carne de res, queso y vegetales.",
-                Precio = 120
-            });
-
-            platillos.Add(new Platillo
-            {
-                Nombre = "Ensalada",
-                Descripcion = "Ensalada fresca con lechuga, jitomate, pepino y aderezo.",
-                Precio = 90
-            });
-
-            platillos.Add(new Platillo
-            {
-                Nombre = "Pizza Pepperoni",
-                Descripcion = "Pizza con salsa de tomate, queso mozzarella y pepperoni.",
-                Precio = 150
-            });
-
-            // Enlaza al CollectionView
-            PlatillosCollection.ItemsSource = platillos;
+            PlatillosCollection.ItemsSource = _platillosDisponibles;
         }
 
         private void AgregarAlCarrito_Clicked(object sender, EventArgs e)
@@ -60,13 +36,14 @@ namespace SmartMenu.Views
             if (platillo != null)
             {
                 carrito.Add(platillo);
-                DisplayAlert("Agregado", $"{platillo.Nombre} añadido al carrito", "OK");
+                DisplayAlert("Agregado", $"{platillo.nombre} añadido al carrito", "OK");
             }
         }
 
         private async void AbrirCarrito_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CarritoPage(carrito, mesaId));
+            await Navigation.PushAsync(new CarritoPage(carrito, _pedidoId));
         }
+
     }
 }
