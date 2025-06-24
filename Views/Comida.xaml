@@ -15,11 +15,11 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="25" HorizontalOptions="Center">
+        <VerticalStackLayout Padding="20" Spacing="20">
 
             <Label
-                Text="Comida"
-                FontSize="32"
+                Text="Menú disponible"
+                FontSize="28"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 TextColor="Black"/>
@@ -27,41 +27,42 @@
             <CollectionView x:Name="PlatillosCollection" ItemsLayout="VerticalList" SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
-                            <Frame BackgroundColor="White" CornerRadius="15" Padding="15" HasShadow="True" WidthRequest="300">
-                                <VerticalStackLayout Spacing="10">
-                                    <Label Text="{Binding Nombre}" 
-                                           FontSize="20" 
-                                           FontAttributes="Bold" 
-                                           TextColor="Black" 
-                                           HorizontalOptions="Center" />
+                        <Frame BackgroundColor="White"
+                               CornerRadius="20"
+                               Padding="15"
+                               Margin="10"
+                               HasShadow="True">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="{Binding nombre}" 
+                                       FontSize="22" 
+                                       FontAttributes="Bold" 
+                                       TextColor="#333" 
+                                       HorizontalOptions="Center" />
 
-                                    <Label Text="{Binding Descripcion}" 
-                                           FontSize="14" 
-                                           TextColor="Gray"
-                                           HorizontalOptions="Center" 
-                                           HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding descripcion}" 
+                                       FontSize="14" 
+                                       TextColor="#666"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center" />
 
-                                    <Label Text="{Binding Precio, StringFormat='Precio: ${0:F2}'}" 
-                                           FontSize="14" 
-                                           TextColor="DarkGreen" 
-                                           HorizontalOptions="Center" />
+                                <Label Text="{Binding precio, StringFormat='Precio: ${0:F2}'}"
+                                       FontSize="14" 
+                                       TextColor="#28A745" 
+                                       HorizontalOptions="Center" />
 
-                                    <Button Text="Agregar al carrito"
-                                            BackgroundColor="#DC3545"
-                                            TextColor="White"
-                                            CornerRadius="20"
-                                            WidthRequest="180"
-                                            Margin="0,15,0,0"
-                                            CommandParameter="{Binding .}"
-                                            Clicked="AgregarAlCarrito_Clicked" />
-                                </VerticalStackLayout>
-                            </Frame>
-                        </VerticalStackLayout>
+                                <Button Text="Agregar al carrito"
+                                        BackgroundColor="#DC3545"
+                                        TextColor="White"
+                                        CornerRadius="20"
+                                        WidthRequest="200"
+                                        HorizontalOptions="Center"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="AgregarAlCarrito_Clicked" />
+                            </VerticalStackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
-
