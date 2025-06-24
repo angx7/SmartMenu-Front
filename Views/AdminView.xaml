@@ -71,6 +71,14 @@
                         Opacity=".9"
                         Clicked="OnReportesClicked"/>
 
+                        <Button Text="Clientes frecuentes"
+                        BackgroundColor="#D32F2F"
+                        TextColor="White"
+                        CornerRadius="20"
+                        Clicked="OnVerClientesFrecuentesClicked"
+                        Opacity=".9"/>
+
+
                         <Button Text="Cerrar sesión" Clicked="OnLogoutClicked" />
                     </VerticalStackLayout>
 

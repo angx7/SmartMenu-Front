@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartMenu.Views.ClientesPage"
+             Title="Clientes Frecuentes"
+             BackgroundColor="#FFFDE7">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Clientes Frecuentes"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#333" />
+
+            <!-- Formulario para agregar cliente -->
+            <Frame BackgroundColor="#FFFFFF" Padding="15" CornerRadius="15" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Entry x:Name="NombreEntry" Placeholder="Nombre completo" />
+                    <Entry x:Name="CorreoEntry" Placeholder="Correo electrónico" Keyboard="Email" />
+                    <Entry x:Name="TelefonoEntry" Placeholder="Teléfono" Keyboard="Telephone" />
+
+                    <Button Text="Agregar Cliente"
+                            BackgroundColor="#4CAF50"
+                            TextColor="White"
+                            CornerRadius="20"
+                            Clicked="OnAgregarClienteClicked" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Lista de clientes -->
+            <CollectionView x:Name="ClientesCollection" ItemsLayout="VerticalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" CornerRadius="15" Padding="10" Margin="5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding nombre}" FontSize="18" FontAttributes="Bold" TextColor="#212121" />
+                                <Label Text="{Binding correo}" FontSize="14" TextColor="#616161" />
+                                <Label Text="{Binding telefono}" FontSize="14" TextColor="#424242" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -26,6 +26,12 @@ public partial class AdminView : ContentPage
     {
         await Navigation.PushAsync(new proveedoresPage());
     }
+
+    private async void OnVerClientesFrecuentesClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ClientesPage());
+    }
+
     private void OnLogoutClicked(object sender, EventArgs e)
     {
         Preferences.Clear();
