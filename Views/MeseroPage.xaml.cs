@@ -3,9 +3,9 @@ using Microsoft.Maui.Controls;
 
 namespace SmartMenu.Views;
 
-public partial class HomePage : ContentPage
+public partial class MeseroPage : ContentPage
 {
-    public HomePage()
+    public MeseroPage()
     {
         InitializeComponent();
     }

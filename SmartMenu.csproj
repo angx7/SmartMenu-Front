@@ -86,7 +86,7 @@
 	  <MauiXaml Update="Views\Comida.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\HomePage.xaml">
+	  <MauiXaml Update="Views\MeseroPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginPage.xaml">
@@ -96,6 +96,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Globals\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\MeseroPage.xaml.cs">
+	    <DependentUpon>MeseroPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>
